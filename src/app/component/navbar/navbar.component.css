@@ -1,0 +1,23 @@
+* {
+  font-family: "Lobster", sans-serif;
+  font-style: normal;
+  list-style: none;
+}
+button {
+  color: white;
+  border: 2px solid var(--border-btn-color);
+  border-radius: 15px;
+  padding: 0.2rem;
+  background-color: transparent;
+  font-size: larger;
+}
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
