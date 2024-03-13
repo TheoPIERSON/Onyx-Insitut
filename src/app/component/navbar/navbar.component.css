@@ -10,6 +10,7 @@ button {
   padding: 0.2rem;
   background-color: transparent;
   font-size: larger;
+  cursor: pointer;
 }
 ul {
   display: flex;
@@ -20,4 +21,14 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.insta {
+  border: none;
+}
+.insta svg {
+  width: 3rem;
+  height: 3rem;
+}
+.hero {
+  padding: 0.5rem;
 }

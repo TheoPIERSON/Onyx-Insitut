@@ -4,8 +4,14 @@
   padding: 0%;
 }
 :root {
-  --border-btn-color: rgb(224, 52, 195);
+  --border-btn-color: #fc62aa;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
