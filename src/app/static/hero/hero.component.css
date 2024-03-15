@@ -1,4 +1,18 @@
 p {
+  font-family: "Lobster", sans-serif;
   color: white;
-  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  text-shadow: -7px 7px 0px rgba(252, 98, 170, 1);
+  font-size: calc(7000vw / 1018);
+}
+.container {
+  margin-left: 5rem;
+}
+svg {
+  width: 100%;
+  height: 100%;
+}
+.hero {
+  width: 35rem;
+  height: 10rem;
+  padding-left: 2rem;
 }
