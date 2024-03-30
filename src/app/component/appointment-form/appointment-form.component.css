@@ -1,0 +1,91 @@
+* {
+  font-family: "Lobster", sans-serif;
+  font-style: normal;
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+form {
+  margin-top: 5rem;
+  height: 100%;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  padding: 50px 35px;
+}
+form * {
+  color: white;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+form h3 {
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+}
+
+input {
+  height: 4rem;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.501);
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder {
+  color: #a7a7a7;
+}
+input:focus {
+  transition: 400ms;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: var(--border-btn-color);
+  text-decoration: none;
+  width: 8rem;
+  border: 3px solid transparent;
+  border-radius: 5px;
+}
+a span {
+  color: aliceblue;
+}
+a:hover {
+  background-color: var(--border-btn-color-light);
+}
+.hero-banner {
+  display: grid;
+  place-items: center;
+}
+.hero {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: calc(5000vw / 1018);
+}
+.logo {
+  width: 43rem;
+}
