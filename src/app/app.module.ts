@@ -17,6 +17,7 @@ import { MonTravailComponent } from './component/mon-travail/mon-travail.compone
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     FooterComponent,
     MonTravailComponent,
     CalendarComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
