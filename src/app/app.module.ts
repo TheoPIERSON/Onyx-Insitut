@@ -8,17 +8,18 @@ import { NavbarComponent } from './static/navbar/navbar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import { HomeImagesComponent } from './component/home-images/home-images.component';
+import { HomeImagesComponent } from './component/body/home-images/home-images.component';
 import { HeroComponent } from './static/hero/hero.component';
-import { AppointmentFormComponent } from './component/appointment-form/appointment-form.component';
+import { AppointmentFormComponent } from './component/body/appointment-form/appointment-form.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { MonTravailComponent } from './component/mon-travail/mon-travail.component';
+import { MonTravailComponent } from './component/body/mon-travail/mon-travail.component';
 
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { LoginFormComponent } from './login/login-form/login-form.component';
+import { LoginFormComponent } from './login-screen/login-form/login-form.component';
 import { BodyComponent } from './component/body/body.component';
+import { LoginComponent } from './login-screen/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { BodyComponent } from './component/body/body.component';
     CalendarComponent,
     LoginFormComponent,
     BodyComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
