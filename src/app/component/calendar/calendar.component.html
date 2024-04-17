@@ -1,0 +1,77 @@
+<div id="calendar-container">
+  <div id="calendar-btn">
+    <div id="cal-date-nav-buttons">
+      <button
+        id="previous"
+        mwlCalendarPreviousView
+        [(viewDate)]="viewDate"
+        [view]="view"
+        [excludeDays]="[0, 6]"
+      >
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      <button
+        class="calendar-btn"
+        id="today"
+        mwlCalendarToday
+        [(viewDate)]="viewDate"
+      >
+        Aujourd'hui
+      </button>
+      <button
+        id="next"
+        mwlCalendarNextView
+        [(viewDate)]="viewDate"
+        [view]="view"
+        [excludeDays]="[0, 6]"
+      >
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </button>
+    </div>
+    <div id="cal-date-field">
+      {{ viewDate | calendarDate : view + "ViewTitle" : "en" }}
+    </div>
+    <div id="cal-view-nav-buttons">
+      <button
+        class="calendar-btn"
+        id="month"
+        (click)="setView(CalendarView.Month)"
+      >
+        Mois
+      </button>
+      <button
+        class="calendar-btn"
+        id="week"
+        (click)="setView(CalendarView.Week)"
+      >
+        Semaine
+      </button>
+      <button class="calendar-btn" id="day" (click)="setView(CalendarView.Day)">
+        Jour
+      </button>
+    </div>
+  </div>
+  <span [ngSwitch]="view" class="calendar-view"
+    ><mwl-calendar-month-view
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="event"
+      [excludeDays]="[0, 6]"
+    ></mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="event"
+      [excludeDays]="[0, 6]"
+      [dayStartHour]="9"
+      [dayEndHour]="20"
+    ></mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="event"
+      [dayStartHour]="9"
+      [dayEndHour]="20"
+    ></mwl-calendar-day-view>
+  </span>
+</div>

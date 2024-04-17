@@ -1,11 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-* {
+You can add global styles to this file,
+and also import other style files * {
   margin: 0%;
   padding: 0%;
 }
 :root {
   --border-btn-color: #fc62aa;
   --border-btn-color-light: #feafd4;
+  --card-color: #ff7eba;
 }
 
 html,

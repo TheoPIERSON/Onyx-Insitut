@@ -14,6 +14,10 @@ import { AppointmentFormComponent } from './component/appointment-form/appointme
 import { FooterComponent } from './component/footer/footer.component';
 import { MonTravailComponent } from './component/mon-travail/mon-travail.component';
 
+import { CalendarComponent } from './component/calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +28,17 @@ import { MonTravailComponent } from './component/mon-travail/mon-travail.compone
     AppointmentFormComponent,
     FooterComponent,
     MonTravailComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,9 +3,27 @@
   font-style: normal;
   list-style: none;
 }
-.hero {
-  font-family: "Lobster", sans-serif;
+
+h2 {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   color: white;
-  text-shadow: -7px 7px 0px rgba(252, 98, 170, 1);
-  font-size: calc(7000vw / 1018);
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: calc(5000vw / 1018);
+  margin-left: 2rem;
+}
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+}
+.phone {
+  font-size: calc(2000vw / 1018);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2rem;
 }
