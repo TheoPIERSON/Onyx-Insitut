@@ -17,9 +17,9 @@ import { MonTravailComponent } from './component/body/mon-travail/mon-travail.co
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { LoginFormComponent } from './login-screen/login-form/login-form.component';
+import { LoginFormComponent } from './component/login-screen/login-form/login-form.component';
 import { BodyComponent } from './component/body/body.component';
-import { LoginComponent } from './login-screen/login/login.component';
+import { LoginComponent } from './component/login-screen/login/login.component';
 
 @NgModule({
   declarations: [
