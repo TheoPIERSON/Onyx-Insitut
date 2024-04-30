@@ -18,9 +18,10 @@ h1 {
   display: grid;
   place-items: center;
   justify-content: space-around;
+  margin-bottom: 1rem;
 }
 
-ul {
+.prestation-data {
   display: flex;
   list-style: none;
   justify-content: space-around;
@@ -31,7 +32,7 @@ ul {
   box-shadow: 3px 3px 0px #ffffffd8;
   width: 60rem;
 }
-li {
+.data-card {
   color: white;
 }
 img {

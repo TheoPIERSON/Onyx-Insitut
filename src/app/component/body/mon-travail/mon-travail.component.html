@@ -15,35 +15,13 @@
     />
   </div>
   <div class="type-prestation-card">
-    <ul>
-      <li>titre</li>
-      <li>descriptions</li>
-      <li>prix</li>
-      <li>durée</li>
-    </ul>
-    <ul>
-      <li>titre</li>
-      <li>descriptions</li>
-      <li>prix</li>
-      <li>durée</li>
-    </ul>
-    <ul>
-      <li>titre</li>
-      <li>descriptions</li>
-      <li>prix</li>
-      <li>durée</li>
-    </ul>
-    <ul>
-      <li>titre</li>
-      <li>descriptions</li>
-      <li>prix</li>
-      <li>durée</li>
-    </ul>
-    <ul>
-      <li>titre</li>
-      <li>descriptions</li>
-      <li>prix</li>
-      <li>durée</li>
-    </ul>
+    <div
+      class="prestation-data"
+      *ngFor="let service of typePrestation$ | async"
+    >
+      <div class="data-card">{{ service.title }}</div>
+      <div class="data-card">{{ service.price }}</div>
+      <div class="data-card">{{ service.duration }}</div>
+    </div>
   </div>
 </div>

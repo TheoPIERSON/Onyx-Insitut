@@ -20,6 +20,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { LoginFormComponent } from './component/login-screen/login-form/login-form.component';
 import { BodyComponent } from './component/body/body.component';
 import { LoginComponent } from './component/login-screen/login/login.component';
+import { BookingAppointmentComponent } from './component/booking-appointment/booking-appointment.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,9 +37,11 @@ import { LoginComponent } from './component/login-screen/login/login.component';
     LoginFormComponent,
     BodyComponent,
     LoginComponent,
+    BookingAppointmentComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
