@@ -1,0 +1,88 @@
+* {
+  font-family: "Lobster", sans-serif;
+  font-style: normal;
+  list-style: none;
+}
+
+form {
+  margin-top: 0%;
+  height: 100%;
+  width: 30%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  padding: 0.7% 3%;
+}
+form * {
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.form-title {
+  color: white;
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+label {
+  color: white;
+}
+
+.input-data {
+  height: 3rem;
+  width: 90%;
+  color: var(--input-color);
+  background-color: rgba(255, 255, 255, 0.501);
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder {
+  color: var(--input-placeholder-color);
+}
+.input-data:focus {
+  transition: 400ms;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.input-btn {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: var(--border-btn-color);
+  text-decoration: none;
+  width: 8rem;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  color: aliceblue;
+}
+.input-btn:hover {
+  background-color: var(--border-btn-color-light);
+}
+.hero-banner {
+  display: grid;
+  place-items: center;
+}
+.hero {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: calc(5000vw / 1018);
+  margin-top: 3%;
+}
+.logo {
+  width: 43rem;
+}

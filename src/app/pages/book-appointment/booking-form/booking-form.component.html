@@ -1,0 +1,90 @@
+<div class="container" id="appointment-form">
+  <span class="hero">Prenons rendez-vous !</span>
+
+  <form #addForm="ngForm">
+    <span class="form-title">Inscrivez-vous</span>
+    <div class="form-row">
+      <div class="data-field">
+        <label for="">Nom :</label>
+        <input
+          name="lastname"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="Nom"
+        />
+      </div>
+      <div class="data-field">
+        <label for="">Prenom :</label>
+        <input
+          name="firstname"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="Prénom"
+        />
+      </div>
+      <div class="data-field">
+        <label for="">Numéro de téléphone :</label>
+        <input
+          name="phoneNumber"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="06 07 08 09 10"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="data-field">
+        <label for="">Mail :</label>
+        <input
+          name="email"
+          ngModel
+          class="input-data"
+          type="text"
+          required
+          placeholder="exemple@onyx.com"
+        />
+      </div>
+      <div class="data-field">
+        <label for="">Date de naissance :</label>
+        <input
+          name="birthdate"
+          ngModel
+          class="input-data"
+          type="date"
+          required
+        />
+      </div>
+      <div class="data-field">
+        <label for="password">Mot de passe</label>
+        <input
+          class="input-data"
+          type="password"
+          placeholder="Mot de passe"
+          id="password"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-btn">
+      <input
+        class="input-btn"
+        [disabled]="addForm.invalid"
+        id="add-customer-btn"
+        type="submit"
+        value="S'inscrire"
+      /><input
+        id="add-appointment-btn"
+        class="input-btn"
+        type="button"
+        value="Se connecter"
+      />
+    </div>
+  </form>
+</div>
