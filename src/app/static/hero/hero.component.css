@@ -6,6 +6,7 @@ p {
 }
 .container {
   margin-left: 5rem;
+  margin-top: 3%;
 }
 svg {
   width: 100%;
@@ -15,4 +16,6 @@ svg {
   width: 35rem;
   height: 10rem;
   padding-left: 2rem;
+  margin-top: 4%;
+  margin-bottom: 3%;
 }

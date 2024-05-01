@@ -8,8 +8,8 @@
   position: relative; /* Changement du positionnement en relatif */
   width: 23rem; /* Ajout de largeur pour s'adapter à l'image */
   height: 26rem; /* Ajout de hauteur pour s'adapter à l'image */
-  margin-left: 3rem;
-  margin-top: 1rem;
+  margin-left: 4%;
+  margin-top: 5%;
 }
 
 .white-shadow {

@@ -7,59 +7,64 @@
 .container {
   display: flex;
   justify-content: space-around;
-  align-items: baseline;
+  align-items: flex-start;
+  margin-top: 0%;
+  margin-bottom: 2%;
 }
 form {
-  margin-top: 10%;
+  margin-top: 0%;
   height: 100%;
   width: 30%;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-  padding: 2% 3%;
+  padding: 0.7% 3%;
 }
 form * {
-  color: white;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
 }
-form h3 {
-  font-size: 32px;
-  font-weight: 500;
-  text-align: center;
+.form-title {
+  color: white;
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: 150%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+label {
+  color: white;
 }
 
-input {
-  height: 4rem;
+.input-data {
+  height: 3rem;
   width: 90%;
+  color: var(--input-color);
   background-color: rgba(255, 255, 255, 0.501);
   border-radius: 5px;
   padding: 0 1rem;
-  margin-top: 1rem;
+  margin-top: 0.4rem;
   margin-bottom: 0.5rem;
   font-size: 14px;
   font-weight: 300;
 }
 ::placeholder {
-  color: #a7a7a7;
+  color: var(--input-placeholder-color);
 }
-input:focus {
+.input-data:focus {
   transition: 400ms;
   box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
     rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
-.button {
+.form-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
 }
-a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.input-btn {
   padding: 0.5rem;
   margin: 0.5rem;
   background-color: var(--border-btn-color);
@@ -67,11 +72,9 @@ a {
   width: 8rem;
   border: 3px solid transparent;
   border-radius: 5px;
-}
-a span {
   color: aliceblue;
 }
-a:hover {
+.input-btn:hover {
   background-color: var(--border-btn-color-light);
 }
 .hero-banner {

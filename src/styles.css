@@ -7,6 +7,8 @@ and also import other style files * {
   --border-btn-color: #fc62aa;
   --border-btn-color-light: #feafd4;
   --card-color: #ff7eba;
+  --input-placeholder-color: #bebebe;
+  --input-color: #7a7a7a;
 }
 
 html,

@@ -3,7 +3,9 @@
   font-style: normal;
   list-style: none;
 }
-
+.container {
+  margin-bottom: 3%;
+}
 h1 {
   font-family: "Andika", sans-serif;
   font-weight: 700;
@@ -11,14 +13,15 @@ h1 {
   color: white;
   text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
   font-size: calc(5000vw / 1018);
-  margin-left: 2rem;
+  margin-left: 2%;
+  margin-bottom: 4%;
 }
 
 .type-prestation-card {
   display: grid;
   place-items: center;
   justify-content: space-around;
-  margin-bottom: 1rem;
+  margin-bottom: 2%;
 }
 
 .prestation-data {
@@ -26,7 +29,7 @@ h1 {
   list-style: none;
   justify-content: space-around;
   padding: 1rem;
-  margin-top: 0.6rem;
+  margin-top: 1.5%;
   border-radius: 8px;
   background: var(--card-color);
   box-shadow: 3px 3px 0px #ffffffd8;
