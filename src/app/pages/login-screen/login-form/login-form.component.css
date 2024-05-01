@@ -57,7 +57,7 @@ input:focus {
   align-items: center;
   padding: 1rem;
 }
-a {
+.submit-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,11 +68,10 @@ a {
   width: 8rem;
   border: 3px solid transparent;
   border-radius: 5px;
-}
-a span {
   color: aliceblue;
 }
-a:hover {
+
+.submit-btn:hover {
   background-color: var(--border-btn-color-light);
 }
 .hero-banner {

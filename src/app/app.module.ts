@@ -17,12 +17,13 @@ import { MonTravailComponent } from './component/body/mon-travail/mon-travail.co
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { LoginFormComponent } from './component/login-screen/login-form/login-form.component';
+import { LoginFormComponent } from './pages/login-screen/login-form/login-form.component';
 import { BodyComponent } from './component/body/body.component';
-import { LoginComponent } from './component/login-screen/login/login.component';
+import { LoginComponent } from './pages/login-screen/login/login.component';
 import { BookingAppointmentComponent } from './component/booking-appointment/booking-appointment.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BookAppointmentComponent } from './pages/book-appointment/book-appointment.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     BodyComponent,
     LoginComponent,
     BookingAppointmentComponent,
+    BookAppointmentComponent,
   ],
   imports: [
     BrowserModule,
