@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BookAppointmentComponent } from './pages/book-appointment/book-appointment.component';
 import { BookingFormComponent } from './pages/book-appointment/booking-form/booking-form.component';
-import { BookingCalendarComponent } from './pages/book-appointment/booking-calendar/booking-calendar.component';
+import { ActivationFormComponent } from './pages/activation-form/activation-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { BookingCalendarComponent } from './pages/book-appointment/booking-calen
     LoginComponent,
     BookAppointmentComponent,
     BookingFormComponent,
-    BookingCalendarComponent,
+    ActivationFormComponent,
   ],
   imports: [
     BrowserModule,
