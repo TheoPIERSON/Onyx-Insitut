@@ -21,12 +21,17 @@ export class AppointmentFormComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
+  redirectToActivation() {
+    this.router.navigate(['/activation']);
+  }
+
   public onAddCustomer(addForm: NgForm): void {
     document.getElementById('add-customer-btn');
     this.customerService.addCustomer(addForm.value).subscribe(
       (response: Customers) => {
         console.log(response);
         addForm.reset();
+        this.redirectToActivation();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

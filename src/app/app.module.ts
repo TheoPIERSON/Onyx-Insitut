@@ -20,7 +20,7 @@ import { LoginFormComponent } from './pages/login-screen/login-form/login-form.c
 import { BodyComponent } from './component/body/body.component';
 import { LoginComponent } from './pages/login-screen/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookAppointmentComponent } from './pages/book-appointment/book-appointment.component';
 import { BookingFormComponent } from './pages/book-appointment/booking-form/booking-form.component';
 import { ActivationFormComponent } from './pages/activation-form/activation-form.component';
@@ -48,6 +48,7 @@ import { ActivationFormComponent } from './pages/activation-form/activation-form
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatIconModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

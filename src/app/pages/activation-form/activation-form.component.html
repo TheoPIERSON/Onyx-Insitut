@@ -1,1 +1,32 @@
-<p>activation-form works!</p>
+<div class="container" id="activation-form">
+  <form class="search-container" [formGroup]="search">
+    <label for="activation-code" class="form-title"
+      >Veuillez renseigner dans le champs ci-dessous le code que vous avez reçu
+      par email</label
+    >
+    <input
+      id="activation-code"
+      class="input-data"
+      type="text"
+      required
+      placeholder="_ _ _ _ _ _"
+      formControlName="code"
+    />
+
+    <input
+      class="input-btn"
+      id="validation-btn"
+      type="submit"
+      value="Valider"
+      (click)="onValidation()"
+    />
+    <span class="error-message"
+      >Si rien ne se passe après avoir valider, veuillez vérifier que le code à
+      6 chiffres est bien orthographié.</span
+    >
+    <span class="error-message"
+      >Si après avoir vérifier rien ne se passe, veuillez cliquer
+      <a (click)="redirectToHomepage()" class="redirectToHomepage">Ici</a></span
+    >
+  </form>
+</div>

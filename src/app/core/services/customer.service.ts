@@ -29,10 +29,11 @@ export class CustomerService {
       credentials
     );
   }
-  public activateAccount(code: String): Observable<Customers> {
-    const activation = { code };
+  public activateAccount(code: string): Observable<Customers> {
+    const activation = { code: code };
+    console.log(activation);
     return this.http.post<Customers>(
-      `${this.apiServerUrl}/customers/activate`,
+      `${this.apiServerUrl}/customer/activate`,
       activation
     );
   }

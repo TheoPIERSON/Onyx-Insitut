@@ -21,9 +21,12 @@ h2 {
 }
 .phone {
   font-size: calc(2000vw / 1018);
-
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 2rem;
+}
+.admin-btn {
+  border: none;
+  background-color: transparent;
 }

@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { BodyComponent } from './component/body/body.component';
 import { LoginComponent } from './pages/login-screen/login/login.component';
 import { BookAppointmentComponent } from './pages/book-appointment/book-appointment.component';
+import { ActivationFormComponent } from './pages/activation-form/activation-form.component';
 
 export const routes: Routes = [
   { path: '', component: BodyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'book-appointment', component: BookAppointmentComponent },
+  { path: 'activation', component: ActivationFormComponent },
 ];
 
 @NgModule({
