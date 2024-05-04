@@ -8,7 +8,7 @@
   justify-content: space-around;
   align-items: flex-start;
   margin-top: 3%;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
 }
 
 .hero {
@@ -18,13 +18,19 @@
   color: white;
   text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
   font-size: calc(5000vw / 1018);
-  margin-top: 3%;
+  margin-top: 7%;
+  margin-left: 5%;
+}
+.titles {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2%;
 }
 
 form {
   margin-top: 0%;
   height: 100%;
-  width: 100%;
+  width: 60%;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
@@ -42,6 +48,11 @@ form * {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-around;
 }
 label {
   color: white;

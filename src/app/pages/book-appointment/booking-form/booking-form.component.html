@@ -1,20 +1,39 @@
 <span class="hero">Prenons rendez-vous !</span>
 <div class="container" id="appointment-form">
   <form #addForm="ngForm">
-    <span class="form-title"
-      >Choisissez la prestation pour laquelle <br />
-      vous voulez un rendez-vous</span
-    >
+    <div class="titles">
+      <span class="form-title"
+        >Choisissez la prestation pour laquelle <br />
+        vous voulez un rendez-vous</span
+      >
+      <span class="form-title">Selectionnez la date du rendez-vous</span>
+    </div>
     <div class="form-row">
       <div class="data-field">
         <label for="">Prestation :</label>
-        <input
-          name="prestation"
-          ngModel
+        <select
           class="input-data"
-          type="text"
+          ngModel
+          name="prestation"
+          id="prestation-select"
           required
-          placeholder="Gainage"
+        >
+          <option
+            *ngFor="let prestations of typePrestation$ | async"
+            value="{{ prestations.title }}"
+          >
+            {{ prestations.title }}
+          </option>
+        </select>
+      </div>
+      <div class="data-field">
+        <label for="start-date">Date de debut</label>
+        <input
+          class="input-data"
+          type="datetime-local"
+          name="start-date"
+          id="start-date"
+          formControlName="startDate"
         />
       </div>
     </div>
@@ -24,12 +43,7 @@
         [disabled]="addForm.invalid"
         id="add-customer-btn"
         type="submit"
-        value="S'inscrire"
-      /><input
-        id="add-appointment-btn"
-        class="input-btn"
-        type="button"
-        value="Se connecter"
+        value="Valider"
       />
     </div>
   </form>

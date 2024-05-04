@@ -3,7 +3,10 @@
   font-style: normal;
   list-style: none;
 }
-a {
+.logo-link {
+  border: none;
+}
+.navigation-link {
   color: white;
   border: 2px solid var(--border-btn-color);
   border-radius: 15px;
