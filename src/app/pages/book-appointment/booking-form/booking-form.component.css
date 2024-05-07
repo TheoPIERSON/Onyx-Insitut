@@ -23,14 +23,15 @@
 }
 .titles {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 2%;
+  width: 90%;
 }
 
 form {
   margin-top: 0%;
   height: 100%;
-  width: 60%;
+  width: 80%;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
@@ -95,4 +96,31 @@ label {
 }
 .input-btn:hover {
   background-color: var(--border-btn-color-light);
+}
+#data-calendar {
+  display: flex;
+  align-items: center;
+}
+#input-hour {
+  height: 10rem;
+  width: 20rem;
+  color: var(--input-color);
+  background-color: rgba(255, 255, 255, 0.501);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* Ajout de flex-wrap */
+  flex-direction: row;
+  overflow: auto;
+}
+
+.hour-btn {
+  height: 25%;
+  width: 15%;
+  margin: 3%;
+  border-radius: 10%;
+}
+.hour-btn:focus {
+  border: 2px solid var(--border-btn-color);
 }

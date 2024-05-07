@@ -7,38 +7,78 @@
         vous voulez un rendez-vous</span
       >
       <span class="form-title">Selectionnez la date du rendez-vous</span>
+      <span class="form-title">Selectionnez l'heure du rendez-vous</span>
     </div>
     <div class="form-row">
       <div class="data-field">
         <label for="">Prestation :</label>
         <select
           class="input-data"
-          ngModel
+          [(ngModel)]="selectedPrestation"
           name="prestation"
           id="prestation-select"
           required
         >
           <option
             *ngFor="let prestations of typePrestation$ | async"
-            value="{{ prestations.title }}"
+            [value]="prestations.title"
           >
             {{ prestations.title }}
           </option>
         </select>
       </div>
       <div class="data-field">
-        <label for="start-date">Date de debut</label>
-        <input
-          class="input-data"
-          type="datetime-local"
-          name="start-date"
-          id="start-date"
-          formControlName="startDate"
-        />
+        <label for="start-date">Date du rendez-vous</label>
+        <div id="data-calendar">
+          <input
+            name="date"
+            [(ngModel)]="selectedDate"
+            class="input-data"
+            matInput
+            [matDatepicker]="myDatePicker"
+            [min]="minDate"
+            [max]="maxDate"
+            [matDatepickerFilter]="dateFilter"
+          />
+          <mat-datepicker-toggle
+            [for]="myDatePicker"
+            matSuffix
+          ></mat-datepicker-toggle>
+          <mat-datepicker #myDatePicker></mat-datepicker>
+        </div>
+      </div>
+
+      <div class="data-field">
+        <label for="start-date">Heure du rendez-vous</label>
+        <div id="input-hour">
+          <button class="hour-btn" (click)="selectHour('09:00')">09:00</button>
+          <button class="hour-btn" (click)="selectHour('09:30')">09:30</button>
+          <button class="hour-btn" (click)="selectHour('10:00')">10:00</button>
+          <button class="hour-btn" (click)="selectHour('10:30')">10:30</button>
+          <button class="hour-btn" (click)="selectHour('11:00')">11:00</button>
+          <button class="hour-btn" (click)="selectHour('11:30')">11:30</button>
+          <button class="hour-btn" (click)="selectHour('12:00')">12:00</button>
+          <button class="hour-btn" (click)="selectHour('12:30')">12:30</button>
+          <button class="hour-btn" (click)="selectHour('13:00')">13:00</button>
+          <button class="hour-btn" (click)="selectHour('13:30')">13:30</button>
+          <button class="hour-btn" (click)="selectHour('14:00')">14:00</button>
+          <button class="hour-btn" (click)="selectHour('04:30')">14:30</button>
+          <button class="hour-btn" (click)="selectHour('15:00')">15:00</button>
+          <button class="hour-btn" (click)="selectHour('15:30')">15:30</button>
+          <button class="hour-btn" (click)="selectHour('16:00')">16:00</button>
+          <button class="hour-btn" (click)="selectHour('16:30')">16:30</button>
+          <button class="hour-btn" (click)="selectHour('17:00')">17:00</button>
+          <button class="hour-btn" (click)="selectHour('17:30')">17:30</button>
+          <button class="hour-btn" (click)="selectHour('18:00')">18:00</button>
+          <button class="hour-btn" (click)="selectHour('18:30')">18:30</button>
+          <button class="hour-btn" (click)="selectHour('19:00')">19:00</button>
+          <button class="hour-btn" (click)="selectHour('19:30')">19:30</button>
+        </div>
       </div>
     </div>
     <div class="form-btn">
       <input
+        (click)="onSubmit()"
         class="input-btn"
         [disabled]="addForm.invalid"
         id="add-customer-btn"
