@@ -1,9 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDatepickerIntl } from '@angular/material/datepicker';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TypePrestation } from 'src/app/core/models/type_prestation';
 import { TypePrestationService } from 'src/app/core/services/type-prestation.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-booking-form',
@@ -20,19 +19,20 @@ export class BookingFormComponent implements OnInit {
 
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
 
-  constructor(
-    private typePrestationService: TypePrestationService,
-    @Inject(MAT_DATE_LOCALE) private _locale: string,
-    private _adapter: DateAdapter<any>,
-    private _intl: MatDatepickerIntl
-  ) {
+  constructor(private typePrestationService: TypePrestationService) {
     // Créer une copie de minDate pour éviter de modifier la date d'origine
     this.maxDate = new Date(this.minDate);
     // Ajouter 3 mois à maxDate
     this.maxDate.setMonth(this.maxDate.getMonth() + 3);
   }
   ngOnInit(): void {
-    console.log('utilisateur connecté : ');
+    const accessToken = localStorage.getItem('access_token');
+
+    if (accessToken) {
+      console.log('JWT récupéré depuis localStorage :', accessToken);
+    } else {
+      console.log('Aucun JWT trouvé dans localStorage');
+    }
   }
 
   private getTypePrestation(): Observable<TypePrestation[]> {
