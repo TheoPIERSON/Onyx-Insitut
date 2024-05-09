@@ -18,17 +18,7 @@ export class BookingFormComponent implements OnInit {
   minDate: Date = new Date();
   maxDate: Date;
 
-  search = this.fb.nonNullable.group({
-    title: [''],
-  });
-
-  selectedTypePrestation = new Type_prestation({
-    id: 0,
-    title: '',
-    description: '',
-    duration: 0,
-    price: 0,
-  });
+  selectedPrestation: string | undefined; // Nouvelle propriété pour stocker la valeur de l'input prestation
   selectedDate: Date = new Date();
   dateToString: string = this.selectedDate.toLocaleDateString();
   selectedHour: string = '10:00';
@@ -55,15 +45,10 @@ export class BookingFormComponent implements OnInit {
       console.log('Informations du JWT décryptées :', this.decodedToken.id);
     }
   }
-  private getTypePrestation(): Observable<TypePrestation[]> {
+  private getTypePrestation(): Observable<Type_prestation[]> {
     return this.typePrestationService.fetchTypePrestation();
   }
-  selectTypePrestation(typePrestation: Type_prestation): void {
-    this.selectedTypePrestation = typePrestation;
-    this.search.patchValue({
-      title: typePrestation.title,
-    });
-  }
+
   public dateFilter = (date: any) => {
     const day = date.getDay();
     return day != 0 && day != 6;
@@ -79,24 +64,24 @@ export class BookingFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Prestation sélectionnée :', this.selectedTypePrestation);
-    console.log('Date sélectionnée :', this.selectedDate);
-    console.log('Heure sélectionnée :', this.selectedHour);
+    console.log('Prestation sélectionnée :', this.selectedPrestation);
+    // console.log('Date sélectionnée :', this.selectedDate);
+    // console.log('Heure sélectionnée :', this.selectedHour);
 
-    // Construire la date de début
-    let startDate: Date = new Date(this.selectedDate);
-    if (this.selectedHour) {
-      const [hours, minutes] = this.selectedHour.split(':');
-      startDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0);
-    }
-    console.log('La date de début :', startDate);
+    // // Construire la date de début
+    // let startDate: Date = new Date(this.selectedDate);
+    // if (this.selectedHour) {
+    //   const [hours, minutes] = this.selectedHour.split(':');
+    //   startDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0);
+    // }
+    // console.log('La date de début :', startDate);
 
-    // Calculer la date de fin
-    const endDate: Date = new Date(startDate.getTime());
-    const durationInMilliseconds =
-      this.selectedTypePrestation.duration * 60 * 1000; // Convertir la durée en minutes en millisecondes
-    endDate.setTime(endDate.getTime() + durationInMilliseconds);
-    console.log('La date de fin :', endDate);
+    // // Calculer la date de fin
+    // const endDate: Date = new Date(startDate.getTime());
+    // const durationInMilliseconds =
+    //   this.selectedTypePrestation.duration * 60 * 1000; // Convertir la durée en minutes en millisecondes
+    // endDate.setTime(endDate.getTime() + durationInMilliseconds);
+    // console.log('La date de fin :', endDate);
   }
 
   // public onAddAppointment(): void {

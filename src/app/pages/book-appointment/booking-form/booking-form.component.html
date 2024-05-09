@@ -14,20 +14,20 @@
         <label for="">Prestation :</label>
         <select
           class="input-data"
-          [(ngModel)]="selectedTypePrestation"
+          [(ngModel)]="selectedPrestation"
           name="prestation"
           id="prestation-select"
           required
         >
           <option
             *ngFor="let prestations of typePrestation$ | async"
-            [value]="prestations.title"
+            value="{{ prestations.duration }}  {{ prestations.title }}"
           >
             {{ prestations.title }}
           </option>
         </select>
       </div>
-      <div class="data-field">
+      <!-- <div class="data-field">
         <label for="start-date">Date du rendez-vous</label>
         <div id="data-calendar">
           <input
@@ -46,9 +46,9 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #myDatePicker></mat-datepicker>
         </div>
-      </div>
+      </div> -->
 
-      <div class="data-field">
+      <!-- <div class="data-field">
         <label for="start-date">Heure du rendez-vous</label>
         <div id="input-hour">
           <button class="hour-btn" (click)="selectHour('10:00')">10:00</button>
@@ -71,14 +71,13 @@
           <button class="hour-btn" (click)="selectHour('18:30')">18:30</button>
           <button class="hour-btn" (click)="selectHour('19:00')">19:00</button>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="form-btn">
       <input
         (click)="onSubmit()"
         class="input-btn"
-        [disabled]="addForm.invalid"
-        id="add-customer-btn"
+        id="add-appointment-btn"
         type="submit"
         value="Valider"
       />
