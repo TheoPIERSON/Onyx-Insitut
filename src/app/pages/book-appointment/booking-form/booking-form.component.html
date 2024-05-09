@@ -14,7 +14,7 @@
         <label for="">Prestation :</label>
         <select
           class="input-data"
-          [(ngModel)]="selectedPrestation"
+          [(ngModel)]="selectedTypePrestation"
           name="prestation"
           id="prestation-select"
           required
@@ -51,8 +51,6 @@
       <div class="data-field">
         <label for="start-date">Heure du rendez-vous</label>
         <div id="input-hour">
-          <button class="hour-btn" (click)="selectHour('09:00')">09:00</button>
-          <button class="hour-btn" (click)="selectHour('09:30')">09:30</button>
           <button class="hour-btn" (click)="selectHour('10:00')">10:00</button>
           <button class="hour-btn" (click)="selectHour('10:30')">10:30</button>
           <button class="hour-btn" (click)="selectHour('11:00')">11:00</button>
@@ -72,7 +70,6 @@
           <button class="hour-btn" (click)="selectHour('18:00')">18:00</button>
           <button class="hour-btn" (click)="selectHour('18:30')">18:30</button>
           <button class="hour-btn" (click)="selectHour('19:00')">19:00</button>
-          <button class="hour-btn" (click)="selectHour('19:30')">19:30</button>
         </div>
       </div>
     </div>

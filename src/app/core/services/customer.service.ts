@@ -19,6 +19,10 @@ export class CustomerService {
     );
   }
 
+  public findCustomerById(id: number): Observable<Customers> {
+    return this.http.get<Customers>(`${this.apiServerUrl}/customer/${id}`);
+  }
+
   public connectCustomer(
     username: string,
     password: string
