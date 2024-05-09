@@ -18,6 +18,9 @@ export class CustomerService {
       customer
     );
   }
+  public fetchCustomers(): Observable<Customers[]> {
+    return this.http.get<Customers[]>(`${this.apiServerUrl}/customer/all`);
+  }
 
   public findCustomerById(id: number): Observable<Customers> {
     return this.http.get<Customers>(`${this.apiServerUrl}/customer/${id}`);

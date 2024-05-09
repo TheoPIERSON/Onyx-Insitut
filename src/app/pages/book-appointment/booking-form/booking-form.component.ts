@@ -64,24 +64,36 @@ export class BookingFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Prestation sélectionnée :', this.selectedPrestation);
-    // console.log('Date sélectionnée :', this.selectedDate);
-    // console.log('Heure sélectionnée :', this.selectedHour);
+    let selectedPrestationDuration: number = 0;
+    if (this.selectedPrestation) {
+      // Séparation de la chaîne en utilisant le tiret comme délimiteur
+      const parts = this.selectedPrestation.split('-');
+      // Extrait le nombre au début de la chaîne et le convertit en entier
+      selectedPrestationDuration = parseInt(parts[0], 10);
+      const selectedPrestationTitle = parts[1];
+      // Utilisez selectedPrestationDuration comme bon vous semble
+      console.log(selectedPrestationDuration); // Affiche 20
+    } else {
+      console.log("selectedPrestation n'est pas défini");
+    }
 
-    // // Construire la date de début
-    // let startDate: Date = new Date(this.selectedDate);
-    // if (this.selectedHour) {
-    //   const [hours, minutes] = this.selectedHour.split(':');
-    //   startDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0);
-    // }
-    // console.log('La date de début :', startDate);
+    console.log('Date sélectionnée :', this.selectedDate);
+    console.log('Heure sélectionnée :', this.selectedHour);
 
-    // // Calculer la date de fin
-    // const endDate: Date = new Date(startDate.getTime());
-    // const durationInMilliseconds =
-    //   this.selectedTypePrestation.duration * 60 * 1000; // Convertir la durée en minutes en millisecondes
-    // endDate.setTime(endDate.getTime() + durationInMilliseconds);
-    // console.log('La date de fin :', endDate);
+    // Construire la date de début
+    let startDate: Date = new Date(this.selectedDate);
+    if (this.selectedHour) {
+      const [hours, minutes] = this.selectedHour.split(':');
+      startDate.setHours(parseInt(hours, 10), parseInt(minutes, 10), 0);
+    }
+    console.log('La date de début :', startDate);
+
+    // Calculer la date de fin
+    const endDate: Date = new Date(
+      startDate.getTime() + selectedPrestationDuration * 60000
+    ); // Convertir les minutes en millisecondes (1 minute = 60000 millisecondes)
+
+    console.log('La date de fin :', endDate);
   }
 
   // public onAddAppointment(): void {
