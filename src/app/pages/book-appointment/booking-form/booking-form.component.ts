@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Appointments } from 'src/app/core/models/appointmentModel';
 import { Type_prestation } from 'src/app/core/classes/type_prestation_class';
 import { FormBuilder } from '@angular/forms';
+import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
 
 @Component({
   selector: 'app-booking-form',
@@ -23,6 +24,14 @@ export class BookingFormComponent implements OnInit {
   dateToString: string = this.selectedDate.toLocaleDateString();
   selectedHour: string = '10:00';
 
+  customerId: number = 0;
+  customerFirstname: string = '';
+  customerLastname: string = '';
+  customerPhoneNumber: string = '';
+  customerEmail: string = '';
+  customerBirthdate: string = '';
+  customerPassword: string = '';
+
   decodedToken: any; // Pour stocker les informations du JWT décrypté
 
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
@@ -30,6 +39,8 @@ export class BookingFormComponent implements OnInit {
   constructor(
     private typePrestationService: TypePrestationService,
     private customerService: CustomerService,
+    private appointmentService: AppointmentService,
+
     private fb: FormBuilder
   ) {
     // Ajouter 3 mois à maxDate
@@ -60,17 +71,23 @@ export class BookingFormComponent implements OnInit {
 
   getCustomerById(id: string) {
     let idCustomer = this.decodedToken.id;
-    this.customerService.findCustomerById(idCustomer);
+    // Appel du service pour trouver le client par son identifiant
+    this.customerService.findCustomerById(idCustomer).subscribe((customer) => {
+      console.log('Informations du client :', customer);
+      // Assignation de l'ID du client à la variable customerId
+      this.customerId = customer.id;
+    });
   }
 
   onSubmit() {
     let selectedPrestationDuration: number = 0;
+    let selectedPrestationId: number = 0;
     if (this.selectedPrestation) {
       // Séparation de la chaîne en utilisant le tiret comme délimiteur
       const parts = this.selectedPrestation.split('-');
       // Extrait le nombre au début de la chaîne et le convertit en entier
       selectedPrestationDuration = parseInt(parts[0], 10);
-      const selectedPrestationTitle = parts[1];
+      selectedPrestationId = parseInt(parts[1]);
       // Utilisez selectedPrestationDuration comme bon vous semble
       console.log(selectedPrestationDuration); // Affiche 20
     } else {
@@ -94,8 +111,35 @@ export class BookingFormComponent implements OnInit {
     ); // Convertir les minutes en millisecondes (1 minute = 60000 millisecondes)
 
     console.log('La date de fin :', endDate);
-  }
 
+    // Appeler la méthode pour récupérer les informations du client
+    this.getCustomerById(this.decodedToken.id);
+    let selectedCustomerId = this.customerId;
+    let selectedCustomerFirstname = this.customerFirstname;
+    let selectedCustomerLastname = this.customerLastname;
+    let selectedCustomerPhoneNumber = this.customerPhoneNumber;
+    let selectedCustomerEmail = this.customerEmail;
+    let selectedCustomerBirthdate = this.customerBirthdate;
+    let selectedCustomerPassword = this.customerPassword;
+
+    const appointmentObj: Appointments = {
+      id: 0,
+      appointmentStartDate: startDate,
+      appointmentEndDate: endDate,
+      customer: {
+        id: selectedCustomerId,
+        firstname: selectedCustomerFirstname,
+        lastname: selectedCustomerLastname,
+        phoneNumber: selectedCustomerPhoneNumber,
+        email: selectedCustomerEmail,
+        birthdate: selectedCustomerBirthdate,
+        password: selectedCustomerPassword,
+      },
+    };
+    this.appointmentService
+      .addAppointment(appointmentObj)
+      .subscribe((response: Appointments) => {});
+  }
   // public onAddAppointment(): void {
 
   //   const appointmentObj: Appointments = {

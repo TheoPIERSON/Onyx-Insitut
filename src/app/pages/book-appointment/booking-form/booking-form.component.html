@@ -21,7 +21,7 @@
         >
           <option
             *ngFor="let prestations of typePrestation$ | async"
-            value="{{ prestations.duration }}-{{ prestations.title }}"
+            value="{{ prestations.duration }}-{{ prestations.id }}"
           >
             {{ prestations.title }}
           </option>

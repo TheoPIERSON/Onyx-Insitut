@@ -17,4 +17,9 @@ export class TypePrestationService {
       `${this.apiServerUrl}/type_prestation/all`
     );
   }
+  public findById(id: number): Observable<TypePrestation> {
+    return this.http.get<TypePrestation>(
+      `${this.apiServerUrl}/type_prestation/${id}`
+    );
+  }
 }
