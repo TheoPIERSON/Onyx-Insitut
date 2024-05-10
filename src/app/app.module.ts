@@ -23,12 +23,14 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { provideRouter } from '@angular/router';
 import { AuthInterceptorService } from './core/services/interceptor/auth-interceptor.service';
+import { AppointmentModalComponent } from './pages/book-appointment/appointment-modal/appointment-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { AuthInterceptorService } from './core/services/interceptor/auth-interce
     BookAppointmentComponent,
     BookingFormComponent,
     ActivationFormComponent,
+    AppointmentModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { AuthInterceptorService } from './core/services/interceptor/auth-interce
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     MatIconModule,
     MatInputModule,
     MatDatepickerModule,

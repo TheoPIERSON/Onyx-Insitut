@@ -9,6 +9,9 @@ import { Appointments } from 'src/app/core/models/appointmentModel';
 import { Type_prestation } from 'src/app/core/classes/type_prestation_class';
 import { FormBuilder } from '@angular/forms';
 import { AppointmentService } from 'src/app/core/services/AppointmentService/appointment.service';
+import { TypePrestationIdService } from 'src/app/core/services/Type_prestation/type-prestation-id.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
 
 @Component({
   selector: 'app-booking-form',
@@ -38,9 +41,10 @@ export class BookingFormComponent implements OnInit {
 
   constructor(
     private typePrestationService: TypePrestationService,
+    private typePrestationIdService: TypePrestationIdService,
     private customerService: CustomerService,
     private appointmentService: AppointmentService,
-
+    public matDialog: MatDialog,
     private fb: FormBuilder
   ) {
     // Ajouter 3 mois à maxDate
@@ -139,39 +143,25 @@ export class BookingFormComponent implements OnInit {
     this.appointmentService
       .addAppointment(appointmentObj)
       .subscribe((response: Appointments) => {});
+    this.typePrestationService.findById(selectedPrestationId).subscribe(
+      (res: TypePrestation) => {
+        this.typePrestationIdService.setSelectedTypePrestationId(
+          selectedPrestationId
+        );
+        this.openModal(); // Ouvrez la modale avec les informations du client
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+      }
+    );
   }
-  // public onAddAppointment(): void {
-
-  //   const appointmentObj: Appointments = {
-  //     id: 0,
-  //     appointmentStartDate: this.se,
-  //     appointmentEndDate: endDate,
-  //     customer: {
-  //       id: this.selectedCustomer.id,
-  //       firstname: this.selectedCustomer.firstname,
-  //       lastname: this.selectedCustomer.lastname,
-  //       phoneNumber: this.selectedCustomer.phoneNumber,
-  //       email: this.selectedCustomer.email,
-  //       birthdate: this.selectedCustomer.birthdate,
-  //     },
-  //   };
-
-  //   this.appointmentService
-  //     .addAppointment(appointmentObj)
-  //     .subscribe((response: Appointments) => {});
-  //   this.typePrestationService
-  //     .findById(this.selectedTypePrestation.id)
-  //     .subscribe(
-  //       (res: TypePrestation) => {
-  //         this.selectedTypePrestation = res;
-  //         this.typePrestationIdService.setSelectedTypePrestationId(
-  //           this.selectedTypePrestation.id
-  //         );
-  //         this.openModal(); // Ouvrez la modale avec les informations du client
-  //       },
-  //       (error: HttpErrorResponse) => {
-  //         console.error(error);
-  //       }
-  //     );
-  // }
+  openModal() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.id = 'modal-component';
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(
+      AppointmentModalComponent,
+      dialogConfig
+    );
+  }
 }

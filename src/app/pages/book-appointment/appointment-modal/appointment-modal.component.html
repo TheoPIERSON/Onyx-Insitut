@@ -1,0 +1,19 @@
+<div id="modal-content-wrapper">
+  <form #editForm="ngForm" (ngSubmit)="onValidation()">
+    <h2>
+      Vous allez valider un rendez-vous pour une
+      {{ selectedTypePrestation.title }}
+      le {{ latestAppointment?.appointmentStartDate }} jusqu'à
+      {{ latestAppointment?.appointmentEndDate }} avec Mme
+      {{ latestAppointment?.customer?.lastname }}
+    </h2>
+    <div class="form-btn">
+      <input
+        class="input-btn"
+        id="prestation-btn"
+        type="submit"
+        value="Valider"
+      />
+    </div>
+  </form>
+</div>
