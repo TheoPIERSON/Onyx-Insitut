@@ -12,7 +12,7 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) {}
 
-  public getAppointments(): Observable<Appointments[]> {
+  public fetchAppointments(): Observable<Appointments[]> {
     return this.http.get<Appointments[]>(
       `${this.apiServerUrl}/appointment/all`
     );
@@ -28,6 +28,21 @@ export class AppointmentService {
       `${this.apiServerUrl}/appointment/${id}`
     );
   }
+
+  findByDate(startDate: string, endDate: string): Observable<Appointments[]> {
+    const params = {
+      startDate: startDate,
+      endDate: endDate,
+    };
+
+    return this.http.get<Appointments[]>(
+      `${this.apiServerUrl}/appointment/between_date`,
+      {
+        params: params,
+      }
+    );
+  }
+
   public getLatestAppointment(): Observable<Appointments> {
     return this.http.get<Appointments>(
       `${this.apiServerUrl}/appointment/latest`

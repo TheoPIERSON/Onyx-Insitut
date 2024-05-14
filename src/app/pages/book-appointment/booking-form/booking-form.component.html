@@ -39,6 +39,7 @@
             [min]="minDate"
             [max]="maxDate"
             [matDatepickerFilter]="dateFilter"
+            (ngModelChange)="onDateChange($event)"
           />
           <mat-datepicker-toggle
             [for]="myDatePicker"
@@ -52,23 +53,14 @@
         <label for="start-date">Heure du rendez-vous</label>
         <div id="input-hour">
           <button class="hour-btn" (click)="selectHour('10:00')">10:00</button>
-          <button class="hour-btn" (click)="selectHour('10:30')">10:30</button>
           <button class="hour-btn" (click)="selectHour('11:00')">11:00</button>
-          <button class="hour-btn" (click)="selectHour('11:30')">11:30</button>
           <button class="hour-btn" (click)="selectHour('12:00')">12:00</button>
-          <button class="hour-btn" (click)="selectHour('12:30')">12:30</button>
           <button class="hour-btn" (click)="selectHour('13:00')">13:00</button>
-          <button class="hour-btn" (click)="selectHour('13:30')">13:30</button>
           <button class="hour-btn" (click)="selectHour('14:00')">14:00</button>
-          <button class="hour-btn" (click)="selectHour('04:30')">14:30</button>
           <button class="hour-btn" (click)="selectHour('15:00')">15:00</button>
-          <button class="hour-btn" (click)="selectHour('15:30')">15:30</button>
           <button class="hour-btn" (click)="selectHour('16:00')">16:00</button>
-          <button class="hour-btn" (click)="selectHour('16:30')">16:30</button>
           <button class="hour-btn" (click)="selectHour('17:00')">17:00</button>
-          <button class="hour-btn" (click)="selectHour('17:30')">17:30</button>
           <button class="hour-btn" (click)="selectHour('18:00')">18:00</button>
-          <button class="hour-btn" (click)="selectHour('18:30')">18:30</button>
           <button class="hour-btn" (click)="selectHour('19:00')">19:00</button>
         </div>
       </div>

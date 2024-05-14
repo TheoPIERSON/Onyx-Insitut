@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { TypePrestation } from 'src/app/core/models/type_prestation';
 import { TypePrestationService } from 'src/app/core/services/type-prestation.service';
 import { jwtDecode } from 'jwt-decode';
@@ -38,6 +38,7 @@ export class BookingFormComponent implements OnInit {
   decodedToken: any; // Pour stocker les informations du JWT décrypté
 
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
+  appointments$: Observable<Appointments[]> = this.getAppointments();
 
   constructor(
     private typePrestationService: TypePrestationService,
@@ -62,6 +63,9 @@ export class BookingFormComponent implements OnInit {
   }
   private getTypePrestation(): Observable<Type_prestation[]> {
     return this.typePrestationService.fetchTypePrestation();
+  }
+  private getAppointments(): Observable<Appointments[]> {
+    return this.appointmentService.fetchAppointments();
   }
 
   public dateFilter = (date: any) => {
@@ -155,6 +159,26 @@ export class BookingFormComponent implements OnInit {
       }
     );
   }
+  onDateChange(date: Date) {
+    let selectedPrestationDuration: number = 0;
+    if (this.selectedPrestation) {
+      const parts = this.selectedPrestation.split('-');
+      selectedPrestationDuration = parseInt(parts[0], 10);
+    } else {
+      console.log("selectedPrestation n'est pas défini");
+    }
+    console.log('Date sélectionnée :', date);
+
+    const startDate: string = date.toISOString(); // Convertir la date de début en chaîne de caractères
+
+    const endDate: Date = new Date(
+      date.getTime() + selectedPrestationDuration * 60000
+    );
+    const endDateStr: string = endDate.toISOString(); // Convertir la date de fin en chaîne de caractères
+
+    this.appointmentService.findByDate(startDate, endDateStr);
+  }
+
   openModal() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.id = 'modal-component';
