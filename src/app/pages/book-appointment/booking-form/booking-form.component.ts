@@ -160,6 +160,8 @@ export class BookingFormComponent implements OnInit {
     );
   }
   onDateChange(date: Date) {
+    const twentyHoursInMilliseconds = 20 * 60 * 60 * 1000; // 20 heures en millisecondes
+
     let selectedPrestationDuration: number = 0;
     if (this.selectedPrestation) {
       const parts = this.selectedPrestation.split('-');
@@ -171,12 +173,11 @@ export class BookingFormComponent implements OnInit {
 
     const startDate: string = date.toISOString(); // Convertir la date de début en chaîne de caractères
 
-    const endDate: Date = new Date(
-      date.getTime() + selectedPrestationDuration * 60000
-    );
-    const endDateStr: string = endDate.toISOString(); // Convertir la date de fin en chaîne de caractères
+    const endDate: Date = new Date(date.getTime() + twentyHoursInMilliseconds);
 
+    const endDateStr: string = endDate.toISOString(); // Convertir la date de fin en chaîne de caractères
     this.appointmentService.findByDate(startDate, endDateStr);
+    this.isThereAppointmentOnDate(startDate, endDateStr);
   }
 
   openModal() {
@@ -186,6 +187,26 @@ export class BookingFormComponent implements OnInit {
     const modalDialog = this.matDialog.open(
       AppointmentModalComponent,
       dialogConfig
+    );
+  }
+  isThereAppointmentOnDate(startDate: string, endDate: string) {
+    this.appointmentService.findByDate(startDate, endDate).subscribe(
+      (appointments: any[]) => {
+        if (appointments.length === 0) {
+          console.log('Aucun rdv à cette date');
+        } else {
+          appointments.forEach((appointment) => {
+            const appointmentStartDate = appointment.appointmentStartDate;
+            const appointmentEndDate = appointment.appointmentEndDate;
+            console.log(
+              `Rendez-vous du ${appointmentStartDate} au ${appointmentEndDate}`
+            );
+          });
+        }
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des rendez-vous', error);
+      }
     );
   }
 }
