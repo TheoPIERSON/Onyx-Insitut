@@ -36,6 +36,7 @@ export class BookingFormComponent implements OnInit {
   customerPassword: string = '';
 
   decodedToken: any; // Pour stocker les informations du JWT décrypté
+  takenHours: { start: string; end: string }[] = [];
 
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
   appointments$: Observable<Appointments[]> = this.getAppointments();
@@ -161,21 +162,12 @@ export class BookingFormComponent implements OnInit {
   }
   onDateChange(date: Date) {
     const twentyHoursInMilliseconds = 20 * 60 * 60 * 1000; // 20 heures en millisecondes
-
-    let selectedPrestationDuration: number = 0;
-    if (this.selectedPrestation) {
-      const parts = this.selectedPrestation.split('-');
-      selectedPrestationDuration = parseInt(parts[0], 10);
-    } else {
-      console.log("selectedPrestation n'est pas défini");
-    }
     console.log('Date sélectionnée :', date);
 
     const startDate: string = date.toISOString(); // Convertir la date de début en chaîne de caractères
-
     const endDate: Date = new Date(date.getTime() + twentyHoursInMilliseconds);
-
     const endDateStr: string = endDate.toISOString(); // Convertir la date de fin en chaîne de caractères
+
     this.appointmentService.findByDate(startDate, endDateStr);
     this.isThereAppointmentOnDate(startDate, endDateStr);
   }
@@ -195,12 +187,20 @@ export class BookingFormComponent implements OnInit {
         if (appointments.length === 0) {
           console.log('Aucun rdv à cette date');
         } else {
-          appointments.forEach((appointment) => {
-            const appointmentStartDate = appointment.appointmentStartDate;
-            const appointmentEndDate = appointment.appointmentEndDate;
-            console.log(
-              `Rendez-vous du ${appointmentStartDate} au ${appointmentEndDate}`
+          this.takenHours = appointments.map((appointment) => {
+            const appointmentStartDate = new Date(
+              appointment.appointmentStartDate
             );
+            const appointmentEndDate = new Date(appointment.appointmentEndDate);
+
+            const startHour = appointmentStartDate
+              .toTimeString()
+              .substring(0, 5);
+            const endHour = appointmentEndDate.toTimeString().substring(0, 5);
+
+            console.log(`Rendez-vous de ${startHour} à ${endHour}`);
+
+            return { start: startHour, end: endHour };
           });
         }
       },
@@ -208,5 +208,31 @@ export class BookingFormComponent implements OnInit {
         console.error('Erreur lors de la récupération des rendez-vous', error);
       }
     );
+  }
+  isHourAvailable(hour: string): boolean {
+    const [hourStart, minuteStart] = hour.split(':').map(Number);
+    const start = new Date(this.selectedDate);
+    start.setHours(hourStart, minuteStart, 0, 0);
+
+    for (const interval of this.takenHours) {
+      const [hourIntervalStart, minuteIntervalStart] = interval.start
+        .split(':')
+        .map(Number);
+      const [hourIntervalEnd, minuteIntervalEnd] = interval.end
+        .split(':')
+        .map(Number);
+
+      const intervalStart = new Date(this.selectedDate);
+      intervalStart.setHours(hourIntervalStart, minuteIntervalStart, 0, 0);
+
+      const intervalEnd = new Date(this.selectedDate);
+      intervalEnd.setHours(hourIntervalEnd, minuteIntervalEnd, 0, 0);
+
+      if (start >= intervalStart && start < intervalEnd) {
+        return false;
+      }
+    }
+
+    return true;
   }
 }

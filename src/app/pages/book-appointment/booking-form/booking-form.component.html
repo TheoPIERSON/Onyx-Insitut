@@ -48,20 +48,32 @@
           <mat-datepicker #myDatePicker></mat-datepicker>
         </div>
       </div>
-
       <div class="data-field">
         <label for="start-date">Heure du rendez-vous</label>
-        <div id="input-hour">
-          <button class="hour-btn" (click)="selectHour('10:00')">10:00</button>
-          <button class="hour-btn" (click)="selectHour('11:00')">11:00</button>
-          <button class="hour-btn" (click)="selectHour('12:00')">12:00</button>
-          <button class="hour-btn" (click)="selectHour('13:00')">13:00</button>
-          <button class="hour-btn" (click)="selectHour('14:00')">14:00</button>
-          <button class="hour-btn" (click)="selectHour('15:00')">15:00</button>
-          <button class="hour-btn" (click)="selectHour('16:00')">16:00</button>
-          <button class="hour-btn" (click)="selectHour('17:00')">17:00</button>
-          <button class="hour-btn" (click)="selectHour('18:00')">18:00</button>
-          <button class="hour-btn" (click)="selectHour('19:00')">19:00</button>
+        <div class="hours-container">
+          <button
+            class="btn btn-primary hour-btn"
+            type="button"
+            *ngFor="
+              let hour of [
+                '08:00',
+                '09:00',
+                '10:00',
+                '11:00',
+                '12:00',
+                '13:00',
+                '14:00',
+                '14:30',
+                '15:00',
+                '16:00',
+                '17:00'
+              ]
+            "
+            [disabled]="!isHourAvailable(hour)"
+            (click)="selectHour(hour)"
+          >
+            {{ hour }}
+          </button>
         </div>
       </div>
     </div>

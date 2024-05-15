@@ -101,7 +101,7 @@ label {
   display: flex;
   align-items: center;
 }
-#input-hour {
+.hours-container {
   height: 10rem;
   width: 20rem;
   color: var(--input-color);
