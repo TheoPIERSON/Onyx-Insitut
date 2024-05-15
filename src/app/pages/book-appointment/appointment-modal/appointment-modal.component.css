@@ -5,7 +5,7 @@
 
 #modal-content-wrapper {
   padding: 3rem;
-  background-color: #ffb7d9;
+  background-color: var(--border-btn-color-light);
 }
 .form-btn {
   display: flex;

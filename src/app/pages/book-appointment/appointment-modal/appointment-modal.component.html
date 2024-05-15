@@ -3,8 +3,8 @@
     <h2>
       Vous allez valider un rendez-vous pour une
       {{ selectedTypePrestation.title }}
-      le {{ latestAppointment?.appointmentStartDate }} jusqu'à
-      {{ latestAppointment?.appointmentEndDate }} avec Mme
+      le {{ getFormattedDate() }} de {{ getFormattedStartTime() }} jusqu'à
+      {{ getFormattedEndTime() }} avec Mme
       {{ latestAppointment?.customer?.lastname }}
     </h2>
     <div class="form-btn">

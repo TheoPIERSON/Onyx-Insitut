@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/core/classes/appointmentClass';
 import { Type_prestation } from 'src/app/core/classes/type_prestation_class';
 import { Customers } from 'src/app/core/models/customerModel';
@@ -14,7 +13,7 @@ import { TypePrestationService } from 'src/app/core/services/type-prestation.ser
   templateUrl: './appointment-modal.component.html',
   styleUrls: ['./appointment-modal.component.css'],
 })
-export class AppointmentModalComponent {
+export class AppointmentModalComponent implements OnInit {
   public customers: Customers[] = [];
   public latestAppointment: Appointment | undefined;
 
@@ -48,6 +47,7 @@ export class AppointmentModalComponent {
       });
     this.getLastAppointment();
   }
+
   getTypePrestationId(typeId: number): void {
     this.typePrestationService.findById(typeId);
   }
@@ -60,6 +60,25 @@ export class AppointmentModalComponent {
         console.log('Dernier rendez-vous :', this.latestAppointment);
       });
   }
+
+  getFormattedDate(): string {
+    if (!this.latestAppointment) return '';
+    const date = new Date(this.latestAppointment.appointmentStartDate);
+    return date.toLocaleDateString([], { day: '2-digit', month: '2-digit' });
+  }
+
+  getFormattedStartTime(): string {
+    if (!this.latestAppointment) return '';
+    const date = new Date(this.latestAppointment.appointmentStartDate);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  getFormattedEndTime(): string {
+    if (!this.latestAppointment) return '';
+    const date = new Date(this.latestAppointment.appointmentEndDate);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
   public onValidation() {
     let idAppointment: number = this.latestAppointment?.id ?? 0;
     let idTypePrestation: number = this.selectedTypePrestation.id;
@@ -73,6 +92,7 @@ export class AppointmentModalComponent {
           console.log('Prestation attribuée avec succès :', response);
           // Mettez à jour votre interface utilisateur ici si nécessaire
           this.router.navigate(['/']);
+          location.reload();
         },
         (error) => {
           console.error("Erreur lors de l'attribution de prestation :", error);
