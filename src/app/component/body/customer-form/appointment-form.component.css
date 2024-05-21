@@ -92,3 +92,21 @@ label {
 .logo {
   width: 43rem;
 }
+@media screen and (max-width: 700px) {
+  .logo {
+    display: none;
+  }
+  .container {
+    display: grid;
+    place-items: center;
+    width: 100%;
+  }
+  .hero {
+    margin-bottom: 4%;
+  }
+  form {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.06);
+    box-shadow: rgba(0, 0, 0, 0.115) 0px 25px 50px -12px;
+  }
+}

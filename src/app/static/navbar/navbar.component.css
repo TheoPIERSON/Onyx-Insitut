@@ -39,3 +39,15 @@ li {
 .hero {
   padding: 0.5rem;
 }
+@media screen and (max-width: 700px) {
+  .hero,
+  .insta {
+    display: none;
+  }
+  ul {
+    justify-content: space-evenly;
+  }
+  li {
+    margin-top: 2%;
+  }
+}

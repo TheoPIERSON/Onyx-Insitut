@@ -19,3 +19,20 @@ svg {
   margin-top: 4%;
   margin-bottom: 3%;
 }
+
+@media screen and (max-width: 700px) {
+  p {
+    text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  }
+  .hero,
+  p {
+    width: 70%;
+    height: 10%;
+    padding-left: 15%;
+  }
+  .container {
+    margin-top: 5%;
+    margin-left: 0%;
+    width: 100%;
+  }
+}
