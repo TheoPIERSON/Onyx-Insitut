@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+
 import { BackgroundComponent } from './static/background/background.component';
 import { NavbarComponent } from './static/navbar/navbar.component';
-
 import { HomeImagesComponent } from './component/body/home-images/home-images.component';
 import { HeroComponent } from './static/hero/hero.component';
 import { AppointmentFormComponent } from './component/body/customer-form/appointment-form.component';
@@ -17,10 +19,12 @@ import { LoginComponent } from './pages/login-screen/login/login.component';
 import { BookAppointmentComponent } from './pages/book-appointment/book-appointment.component';
 import { BookingFormComponent } from './pages/book-appointment/booking-form/booking-form.component';
 import { ActivationFormComponent } from './pages/activation-form/activation-form.component';
+import { AppointmentModalComponent } from './pages/book-appointment/appointment-modal/appointment-modal.component';
+
+import { BeholdWidgetComponent } from '@behold/angular';
 
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -28,9 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import { provideRouter } from '@angular/router';
 import { AuthInterceptorService } from './core/services/interceptor/auth-interceptor.service';
-import { AppointmentModalComponent } from './pages/book-appointment/appointment-modal/appointment-modal.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { AppointmentModalComponent } from './pages/book-appointment/appointment-
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    BeholdWidgetComponent,
   ],
 
   providers: [

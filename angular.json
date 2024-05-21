@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "OnyxClient:build:production"
+              "buildTarget": "OnyxClient:build:production"
             },
             "development": {
-              "browserTarget": "OnyxClient:build:development"
+              "buildTarget": "OnyxClient:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "OnyxClient:build"
+            "buildTarget": "OnyxClient:build"
           }
         },
         "test": {
