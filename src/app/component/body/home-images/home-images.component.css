@@ -1,58 +1,30 @@
-.images {
-  display: flex;
-  padding: 0.5rem;
+.feed-images {
+  width: 60%;
+  height: auto;
+  margin-left: 7%;
+  margin-top: 3%;
   position: relative;
-}
+  border-bottom: 2px solid var(--card-color);
+  border-right: 2px solid var(--card-color);
 
-.container {
-  position: relative; /* Changement du positionnement en relatif */
-  width: 23rem; /* Ajout de largeur pour s'adapter à l'image */
-  height: 26rem; /* Ajout de hauteur pour s'adapter à l'image */
-  margin-left: 4%;
-  margin-top: 5%;
+  padding: 1%;
+}
+/* .pink-shadow {
+  width: 28.2%;
+  height: 51.5%;
+  background-color: var(--card-color);
+  position: absolute;
+  top: 15%;
+  left: 6%;
+  z-index: -1;
 }
 
 .white-shadow {
-  position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
-  width: 22rem; /* Pour remplir entièrement le parent */
-  height: 24rem; /* Pour remplir entièrement le parent */
+  width: 27%;
+  height: 52%;
   background-color: white;
+  position: absolute;
+  top: 13.5%;
+  left: 6.5%;
   z-index: -1;
-}
-
-.pink-shadow {
-  position: absolute;
-  top: 0;
-  left: -1rem;
-  width: 23rem; /* Pour remplir entièrement le parent */
-  height: 24rem; /* Pour remplir entièrement le parent */
-  background-color: var(--border-btn-color);
-  z-index: -2; /* z-index plus bas que le div blanc */
-}
-.white-shadow-2 {
-  position: absolute;
-  top: -0.5rem;
-  left: 0.5rem;
-  width: 22rem; /* Pour remplir entièrement le parent */
-  height: 24rem; /* Pour remplir entièrement le parent */
-  background-color: white;
-  z-index: -1;
-}
-
-.pink-shadow-2 {
-  position: absolute;
-  top: 1rem;
-  left: -1rem;
-  width: 22rem; /* Pour remplir entièrement le parent */
-  height: 23rem; /* Pour remplir entièrement le parent */
-  background-color: var(--border-btn-color);
-  z-index: -2; /* z-index plus bas que le div blanc */
-}
-
-.feed-images {
-  width: 42rem;
-  height: 23rem;
-  object-fit: cover;
-}
+} */
