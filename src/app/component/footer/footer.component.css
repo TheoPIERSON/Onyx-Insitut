@@ -27,6 +27,7 @@ h2 {
   padding-bottom: 2rem;
 }
 .admin-btn {
-  border: none;
-  background-color: transparent;
+  text-decoration: none;
+  opacity: 50%;
+  color: black;
 }
