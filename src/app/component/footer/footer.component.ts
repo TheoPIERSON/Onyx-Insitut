@@ -10,6 +10,6 @@ export class FooterComponent {
   constructor(private router: Router) {}
 
   redirectToAdmin() {
-    //this.router.navigate(['http://localhost:4200']);
+    this.router.navigate(['https://onyx-v3.vercel.app/']);
   }
 }
