@@ -29,7 +29,12 @@ export class AuthInterceptorService implements HttpInterceptor {
         });
       }
     } else {
-      if (token && !request.url.endsWith('/type_prestation/all')) {
+      if (
+        token &&
+        !request.url.endsWith('/type_prestation/all') &&
+        !request.url.endsWith('/customer/add') &&
+        !request.url.endsWith('/customer/activate')
+      ) {
         // Exclure l'URL du token
         request = request.clone({
           setHeaders: {
