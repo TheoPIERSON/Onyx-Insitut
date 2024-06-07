@@ -24,7 +24,7 @@ export class ActivationFormComponent {
   });
 
   redirectToActivation() {
-    this.router.navigate(['/book-appointment']);
+    this.router.navigate(['/login']);
   }
 
   redirectToHomepage() {
