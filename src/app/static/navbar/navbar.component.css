@@ -43,9 +43,12 @@ li {
   .hero,
   .insta {
     display: none;
+    width: 0px;
   }
   ul {
-    justify-content: space-evenly;
+    margin-left: 0%;
+    margin-right: 10%;
+    justify-content: space-around;
   }
   li {
     margin-top: 2%;

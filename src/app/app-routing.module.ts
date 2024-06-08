@@ -6,7 +6,7 @@ import { BookAppointmentComponent } from './pages/book-appointment/book-appointm
 import { ActivationFormComponent } from './pages/activation-form/activation-form.component';
 
 export const routes: Routes = [
-  { path: '', component: BodyComponent },
+  { path: '', component: BodyComponent, data: { displaySidebar: false } },
   { path: 'login', component: LoginComponent },
   { path: 'book-appointment', component: BookAppointmentComponent },
   { path: 'activation', component: ActivationFormComponent },
