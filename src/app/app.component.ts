@@ -8,17 +8,4 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'OnyxClient';
-
-  displaySidebar = true;
-
-  constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.displaySidebar =
-          this.router.routerState.snapshot.root.firstChild?.data[
-            'displaySidebar'
-          ] ?? true;
-      }
-    });
-  }
 }

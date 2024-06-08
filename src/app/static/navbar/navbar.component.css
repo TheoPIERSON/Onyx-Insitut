@@ -46,6 +46,7 @@ li {
     width: 0px;
   }
   ul {
+    display: none;
     margin-left: 0%;
     margin-right: 10%;
     justify-content: space-around;
