@@ -124,3 +124,16 @@ label {
 .hour-btn:focus {
   border: 2px solid var(--border-btn-color);
 }
+
+@media screen and (max-width: 700px) {
+  .titles {
+    display: none;
+  }
+  .form-row {
+    display: grid;
+    margin-bottom: 1%;
+  }
+  .data-field {
+    margin-bottom: 5%;
+  }
+}
