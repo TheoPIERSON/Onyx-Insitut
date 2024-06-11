@@ -13,6 +13,8 @@ import { CustomerService } from 'src/app/core/services/customer.service';
 export class AppointmentFormComponent {
   public customers: Customers[] = [];
 
+  passwordFieldType: string = 'password'; // Initialiser avec 'password'
+
   constructor(
     private customerService: CustomerService,
     private router: Router
@@ -38,5 +40,10 @@ export class AppointmentFormComponent {
         addForm.reset();
       }
     );
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordFieldType =
+      this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }

@@ -9,6 +9,8 @@ import { jwtDecode } from 'jwt-decode';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
+  passwordFieldType: string = 'password'; // Initialiser avec 'password'
+
   constructor(
     private customerService: CustomerService,
     private router: Router
@@ -31,5 +33,9 @@ export class LoginFormComponent {
         console.log("le token, l'email ou le password est invalide");
       },
     });
+  }
+  togglePasswordVisibility(): void {
+    this.passwordFieldType =
+      this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 }

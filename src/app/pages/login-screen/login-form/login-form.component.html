@@ -4,13 +4,21 @@
     <label for="username">Votre email</label>
     <input type="email" #username required placeholder="Email" id="username" />
     <label for="password">Mot de passe</label>
-    <input
-      type="password"
-      #password
-      required
-      placeholder="Mot de passe"
-      id="password"
-    />
+    <div class="password-container">
+      <input
+        #password
+        name="password"
+        class="input-data"
+        ngModel
+        [type]="passwordFieldType"
+        placeholder="Mot de passe"
+        id="password"
+        required
+      />
+      <button type="button" (click)="togglePasswordVisibility()">
+        {{ passwordFieldType === "password" ? "👁️" : "🕳️" }}
+      </button>
+    </div>
 
     <div class="button">
       <button class="submit-btn" type="submit">Connexion</button>

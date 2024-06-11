@@ -104,6 +104,24 @@ label {
 .logo {
   width: 43rem;
 }
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+.password-container button {
+  margin-left: 10px;
+  padding: 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
   .logo {
     display: none;
