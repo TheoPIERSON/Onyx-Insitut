@@ -73,6 +73,7 @@
             "
             [disabled]="!isHourAvailable(hour)"
             (click)="selectHour(hour)"
+            [ngClass]="{ 'selected-hour': isHourSelected(hour) }"
           >
             {{ hour }}
           </button>
