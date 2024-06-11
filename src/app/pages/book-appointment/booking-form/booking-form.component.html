@@ -51,9 +51,8 @@
       <div class="data-field">
         <label for="start-date">Heure du rendez-vous</label>
         <div class="hours-container">
-          <button
-            class="btn btn-primary hour-btn"
-            type="button"
+          <div
+            class="custom-button"
             *ngFor="
               let hour of [
                 '09:00',
@@ -71,12 +70,12 @@
                 '17:00'
               ]
             "
-            [disabled]="!isHourAvailable(hour)"
-            (click)="selectHour(hour)"
             [ngClass]="{ 'selected-hour': isHourSelected(hour) }"
+            [class.disabled]="!isHourAvailable(hour)"
+            (click)="selectHour(hour)"
           >
             {{ hour }}
-          </button>
+          </div>
         </div>
       </div>
     </div>
