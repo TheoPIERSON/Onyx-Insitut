@@ -79,17 +79,18 @@
     </div>
     <div class="form-btn">
       <input
-        class="input-btn"
-        [disabled]="addForm.invalid"
-        id="add-customer-btn"
-        type="submit"
-        value="S'inscrire"
-      /><input
-        id="add-appointment-btn"
+        id="connect-btn"
         class="input-btn"
         type="button"
         value="Se connecter"
         (click)="redirectToLogin()"
+      />
+      <input
+        class="input-btn"
+        [disabled]="addForm.invalid"
+        id="register-btn"
+        type="submit"
+        value="S'inscrire"
       />
     </div>
   </form>

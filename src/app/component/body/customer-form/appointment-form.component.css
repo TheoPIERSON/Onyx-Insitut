@@ -64,7 +64,19 @@ label {
   align-items: center;
   padding: 1rem;
 }
-.input-btn {
+#connect-btn {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: transparent;
+  text-decoration: none;
+  width: 8rem;
+  border-radius: 5px;
+  color: aliceblue;
+}
+#connect-btn:hover {
+  border-bottom: 3px solid var(--border-btn-color);
+}
+#register-btn {
   padding: 0.5rem;
   margin: 0.5rem;
   background-color: var(--border-btn-color);
