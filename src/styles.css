@@ -19,3 +19,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+button {
+  -webkit-appearance: none; /* Pour réinitialiser l'apparence des boutons sur iOS */
+  -moz-appearance: none; /* Pour réinitialiser l'apparence des boutons sur Firefox */
+  appearance: none; /* Pour réinitialiser l'apparence des boutons sur tous les navigateurs */
+  border: none; /* Supprimer la bordure par défaut */
+  padding: 0; /* Supprimer le padding par défaut */
+  background: none; /* Supprimer le background par défaut */
+}
