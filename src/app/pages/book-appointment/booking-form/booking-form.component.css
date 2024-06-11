@@ -133,7 +133,9 @@ label {
 }
 
 .selected-hour {
-  background-color: pink; /* Change this to the desired color */
+  background-color: var(
+    --border-btn-color
+  ); /* Change this to the desired color */
 }
 
 .custom-button.disabled {
