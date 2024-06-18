@@ -38,7 +38,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         // Exclure l'URL du token
         request = request.clone({
           setHeaders: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `bearer ${token}`,
           },
         });
       }
