@@ -91,7 +91,6 @@ export class AppointmentModalComponent implements OnInit {
         (response) => {
           console.log('Prestation attribuée avec succès :', response);
           // Mettez à jour votre interface utilisateur ici si nécessaire
-          location.reload();
           this.redirectToHomepage();
         },
         (error) => {
