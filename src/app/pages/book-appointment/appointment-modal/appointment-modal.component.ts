@@ -91,8 +91,8 @@ export class AppointmentModalComponent implements OnInit {
         (response) => {
           console.log('Prestation attribuée avec succès :', response);
           // Mettez à jour votre interface utilisateur ici si nécessaire
-          this.router.navigate(['/']);
           this.redirectToHomepage();
+          location.reload();
         },
         (error) => {
           console.error("Erreur lors de l'attribution de prestation :", error);
