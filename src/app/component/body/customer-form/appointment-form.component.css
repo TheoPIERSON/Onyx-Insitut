@@ -67,14 +67,17 @@ label {
 #connect-btn {
   padding: 0.5rem;
   margin: 0.5rem;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.037);
   text-decoration: none;
   width: 8rem;
   border-radius: 5px;
   color: aliceblue;
+  border: 1.5px solid var(--border-btn-color);
 }
+
 #connect-btn:hover {
-  border-bottom: 3px solid var(--border-btn-color);
+  border: 3px solid var(--border-btn-color);
+  transition: 300ms;
 }
 #register-btn {
   padding: 0.5rem;

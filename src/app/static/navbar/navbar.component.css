@@ -17,7 +17,17 @@
   font-size: larger;
   cursor: pointer;
   text-decoration: none;
+  transition: 200ms;
 }
+.navigation-link:hover {
+  transition: 300ms;
+  padding: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 3px solid var(--border-btn-color);
+  border-radius: 20px;
+}
+
 ul {
   margin: 0%;
   display: flex;
@@ -28,6 +38,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30rem;
 }
 .insta {
   border: none;
