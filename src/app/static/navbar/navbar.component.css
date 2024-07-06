@@ -50,6 +50,7 @@ li {
 .hero {
   padding: 0.5rem;
 }
+
 @media screen and (max-width: 700px) {
   .hero,
   .insta {

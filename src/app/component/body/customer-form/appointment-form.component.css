@@ -3,7 +3,13 @@
   font-style: normal;
   list-style: none;
 }
-
+#appointment-form {
+  padding-top: 2rem;
+}
+.space {
+  height: 20px;
+  width: 100px;
+}
 .container {
   display: flex;
   justify-content: space-around;
