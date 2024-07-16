@@ -73,12 +73,6 @@ export class AppointmentModalComponent implements OnInit {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 
-  getFormattedEndTime(): string {
-    if (!this.latestAppointment) return '';
-    const date = new Date(this.latestAppointment.appointmentEndDate);
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  }
-
   public onValidation() {
     let idAppointment: number = this.latestAppointment?.id ?? 0;
     let idTypePrestation: number = this.selectedTypePrestation.id;
