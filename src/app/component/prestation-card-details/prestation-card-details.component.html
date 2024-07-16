@@ -1,1 +1,8 @@
 <p>prestation-card-details works!</p>
+<div class="type-prestation-card">
+  <div class="prestation-data" *ngFor="let service of typePrestation$ | async">
+    <div class="data-card">{{ service.title }}</div>
+    <div class="data-card">{{ service.price }}€</div>
+    <div class="data-card">{{ service.duration }}min</div>
+  </div>
+</div>

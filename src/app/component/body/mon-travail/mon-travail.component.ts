@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TypePrestation } from 'src/app/core/models/type_prestation';
 import { TypePrestationService } from 'src/app/core/services/type-prestation.service';
@@ -11,7 +12,10 @@ import { TypePrestationService } from 'src/app/core/services/type-prestation.ser
 export class MonTravailComponent implements OnInit {
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
 
-  constructor(private typePrestationService: TypePrestationService) {}
+  constructor(
+    private typePrestationService: TypePrestationService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.getTypePrestation().subscribe(
       (data) => {
@@ -25,5 +29,9 @@ export class MonTravailComponent implements OnInit {
 
   private getTypePrestation(): Observable<TypePrestation[]> {
     return this.typePrestationService.fetchTypePrestation();
+  }
+
+  redirectToPrestationScreen() {
+    this.router.navigate(['/prestation-detail']);
   }
 }

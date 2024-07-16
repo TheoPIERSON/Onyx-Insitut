@@ -5,6 +5,7 @@
   </div>
   <div class="type-prestation-card">
     <div
+      (click)="redirectToPrestationScreen()"
       class="prestation-data"
       *ngFor="let service of typePrestation$ | async"
     >

@@ -33,6 +33,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { AuthInterceptorService } from './core/services/interceptor/auth-interceptor.service';
+import { PrestationScreenComponent } from './pages/prestation-screen/prestation-screen.component';
+import { PrestationCardDetailsComponent } from './component/prestation-card-details/prestation-card-details.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { AuthInterceptorService } from './core/services/interceptor/auth-interce
     BookingFormComponent,
     ActivationFormComponent,
     AppointmentModalComponent,
+    PrestationScreenComponent,
+    PrestationCardDetailsComponent,
   ],
   imports: [
     BrowserModule,
