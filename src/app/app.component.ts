@@ -7,5 +7,5 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'OnyxClient';
+  title = 'Onyx Institut';
 }
