@@ -1,9 +1,9 @@
 <div id="modal-content-wrapper">
   <form #editForm="ngForm" (ngSubmit)="onValidation()">
     <h2>
-      Vous allez valider un rendez-vous pour une
+      Vous allez valider un rendez-vous pour un/e
       {{ selectedTypePrestation.title }}
-      le {{ getFormattedDate() }} de {{ getFormattedStartTime() }} jusqu'à
+      le {{ getFormattedDate() }} à {{ getFormattedStartTime() }}.
     </h2>
     <div class="form-btn">
       <input

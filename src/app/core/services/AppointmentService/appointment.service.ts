@@ -19,7 +19,7 @@ export class AppointmentService {
   }
   public addAppointment(appointment: Appointments): Observable<Appointments> {
     return this.http.post<Appointments>(
-      `${this.apiServerUrl}/appointment/add`,
+      `${this.apiServerUrl}/appointment/create`,
       appointment
     );
   }
