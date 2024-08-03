@@ -2,6 +2,7 @@
   font-family: "Lobster", sans-serif;
   font-style: normal;
   list-style: none;
+  background-color: var(--main-bg-color);
 }
 .container {
   display: flex;
