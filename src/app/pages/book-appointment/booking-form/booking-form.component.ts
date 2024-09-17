@@ -21,11 +21,11 @@ import { AppointmentModalComponent } from '../appointment-modal/appointment-moda
 export class BookingFormComponent implements OnInit {
   minDate: Date = new Date();
   maxDate: Date;
-
   selectedPrestation: string | undefined;
   selectedDate: Date = new Date();
   dateToString: string = this.selectedDate.toLocaleDateString();
   selectedHour: string | null = null; // Modifié pour accepter null
+  takenHours: { start: string; end: string }[] = [];
 
   customerId: number = 0;
   customerFirstname: string = '';
@@ -35,8 +35,15 @@ export class BookingFormComponent implements OnInit {
   customerBirthdate: string = '';
   customerPassword: string = '';
 
+  selectedTypePrestation = new Type_prestation({
+    id: 0,
+    title: '',
+    description: '',
+    duration: 0,
+    price: 0,
+  });
+
   decodedToken: any;
-  takenHours: { start: string; end: string }[] = [];
 
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
   appointments$: Observable<Appointments[]> = this.getAppointments();
@@ -77,7 +84,9 @@ export class BookingFormComponent implements OnInit {
   };
 
   selectHour(hour: string): void {
-    this.selectedHour = hour;
+    if (this.isHourAvailable(hour)) {
+      this.selectedHour = hour;
+    }
   }
 
   isHourSelected(hour: string): boolean {
@@ -216,6 +225,9 @@ export class BookingFormComponent implements OnInit {
     const start = new Date(this.selectedDate);
     start.setHours(hourStart, minuteStart, 0, 0);
 
+    const end = new Date(start);
+    end.setMinutes(start.getMinutes() + this.selectedTypePrestation.duration);
+
     for (const interval of this.takenHours) {
       const [hourIntervalStart, minuteIntervalStart] = interval.start
         .split(':')
@@ -230,7 +242,12 @@ export class BookingFormComponent implements OnInit {
       const intervalEnd = new Date(this.selectedDate);
       intervalEnd.setHours(hourIntervalEnd, minuteIntervalEnd, 0, 0);
 
-      if (start >= intervalStart && start < intervalEnd) {
+      // Vérification si le créneau proposé chevauche un autre rendez-vous
+      if (
+        (start >= intervalStart && start < intervalEnd) ||
+        (end > intervalStart && end <= intervalEnd) ||
+        (start <= intervalStart && end >= intervalEnd)
+      ) {
         return false;
       }
     }

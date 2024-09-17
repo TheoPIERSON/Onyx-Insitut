@@ -14,7 +14,7 @@ export class AppointmentService {
 
   public fetchAppointments(): Observable<Appointments[]> {
     return this.http.get<Appointments[]>(
-      `${this.apiServerUrl}/appointment/all`
+      `${this.apiServerUrl}/appointment/getAllAppointment`
     );
   }
   public addAppointment(appointment: Appointments): Observable<Appointments> {
