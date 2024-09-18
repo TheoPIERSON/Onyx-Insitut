@@ -13,6 +13,7 @@ and also import other style files * {
 
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
 }
 body {
