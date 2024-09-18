@@ -44,6 +44,9 @@ h1 {
 .data-card {
   color: white;
 }
+.card-title {
+  width: 15rem;
+}
 img {
   width: 21rem;
   height: 21rem;
