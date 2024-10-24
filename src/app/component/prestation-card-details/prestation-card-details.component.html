@@ -1,8 +1,8 @@
 <div class="type-prestation-card">
   <div class="prestation-data" *ngFor="let service of typePrestation$ | async">
-    <h2 class="card-title data-card">
+    <h3 class="card-title data-card">
       <div class="data-card">{{ service.title }}</div>
-    </h2>
+    </h3>
     <div class="info-data">
       <div class="data-card">
         Prix : <span class="data-card">{{ service.price }}€</span>
