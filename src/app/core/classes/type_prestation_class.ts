@@ -6,6 +6,7 @@ export class Type_prestation implements TypePrestation {
   description: string;
   duration: number;
   price: number;
+  type: string;
 
   // Ajoutez un constructeur si nécessaire
   constructor(typePrestationData: TypePrestation) {
@@ -14,5 +15,6 @@ export class Type_prestation implements TypePrestation {
     this.description = typePrestationData.description;
     this.duration = typePrestationData.duration;
     this.price = typePrestationData.price;
+    this.type = typePrestationData.type;
   }
 }

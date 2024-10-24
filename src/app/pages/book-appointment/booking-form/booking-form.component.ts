@@ -41,6 +41,7 @@ export class BookingFormComponent implements OnInit {
     description: '',
     duration: 0,
     price: 0,
+    type: '',
   });
 
   decodedToken: any;

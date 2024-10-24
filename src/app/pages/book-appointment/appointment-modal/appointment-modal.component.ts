@@ -23,6 +23,7 @@ export class AppointmentModalComponent implements OnInit {
     duration: 0,
     price: 0,
     title: '',
+    type: '',
   });
 
   constructor(

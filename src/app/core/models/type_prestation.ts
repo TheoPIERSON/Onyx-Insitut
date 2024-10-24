@@ -3,5 +3,6 @@ export interface TypePrestation {
   title: string;
   description: string;
   duration: number;
+  type: string;
   price: number;
 }
