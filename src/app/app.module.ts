@@ -35,6 +35,7 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { AuthInterceptorService } from './core/services/interceptor/auth-interceptor.service';
 import { PrestationScreenComponent } from './pages/prestation-screen/prestation-screen.component';
 import { PrestationCardDetailsComponent } from './component/prestation-card-details/prestation-card-details.component';
+import { KeysPipe } from './pipes/keys.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { PrestationCardDetailsComponent } from './component/prestation-card-deta
     AppointmentModalComponent,
     PrestationScreenComponent,
     PrestationCardDetailsComponent,
+    KeysPipe,
   ],
   imports: [
     BrowserModule,
