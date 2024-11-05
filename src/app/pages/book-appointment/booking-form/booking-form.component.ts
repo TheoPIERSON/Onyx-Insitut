@@ -45,6 +45,7 @@ export class BookingFormComponent implements OnInit {
   });
 
   decodedToken: any;
+  isFormIncomplete: boolean = false; // Nouveau boolean pour afficher l'erreur
 
   typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
   appointments$: Observable<Appointments[]> = this.getAppointments();
@@ -103,6 +104,13 @@ export class BookingFormComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.isFormValid()) {
+      console.log("Le formulaire n'est pas complet.");
+      this.isFormIncomplete = true; // Active l'affichage du message d'erreur
+      return;
+    }
+    this.isFormIncomplete = false; // Active l'affichage du message d'erreur
+
     let selectedPrestationDuration: number = 0;
     let selectedPrestationId: number = 0;
     if (this.selectedPrestation) {
@@ -153,7 +161,6 @@ export class BookingFormComponent implements OnInit {
         password: selectedCustomerPassword,
       },
     };
-
     this.appointmentService
       .addAppointment(appointmentObj)
       .subscribe((response: Appointments) => {});
@@ -254,5 +261,10 @@ export class BookingFormComponent implements OnInit {
     }
 
     return true;
+  }
+  isFormValid(): boolean {
+    return (
+      !!this.selectedPrestation && !!this.selectedDate && !!this.selectedHour
+    );
   }
 }

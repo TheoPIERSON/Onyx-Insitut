@@ -94,6 +94,9 @@
         </div>
       </div>
     </div>
+    <span class="error-message" *ngIf="isFormIncomplete"
+      >Veuillez remplir tout les champs du formulaire pour valider</span
+    >
     <div class="form-btn">
       <input
         (click)="onSubmit()"
