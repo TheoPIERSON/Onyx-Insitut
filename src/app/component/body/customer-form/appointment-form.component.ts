@@ -28,18 +28,28 @@ export class AppointmentFormComponent {
   }
 
   public onAddCustomer(addForm: NgForm): void {
-    document.getElementById('add-customer-btn');
-    // this.customerService.addCustomer(addForm.value).subscribe(
-    //   (response: Customers) => {
-    //     console.log(response);
-    //     addForm.reset();
-    //     this.redirectToActivation();
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     alert(error.message);
-    //     addForm.reset();
-    //   }
-    // );
+    const customerData = {
+      ...addForm.value,
+      phoneNumber: this.formatPhoneNumber(addForm.value.phoneNumber), // Formatter le numéro ici
+    };
+
+    this.customerService.addCustomer(customerData).subscribe(
+      (response: Customers) => {
+        console.log(response);
+        addForm.reset();
+        this.redirectToActivation();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+  private formatPhoneNumber(phone: string): string {
+    if (phone.startsWith('0')) {
+      return '+33' + phone.substring(1);
+    }
+    return phone;
   }
 
   togglePasswordVisibility(): void {
