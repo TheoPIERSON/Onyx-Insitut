@@ -11,20 +11,24 @@
     <div class="form-row">
       <div class="data-field">
         <label for="">Prestation :</label>
-        <select
-          class="input-data"
-          [(ngModel)]="selectedPrestation"
-          name="prestation"
-          id="prestation-select"
-          required
-        >
-          <option
-            *ngFor="let prestations of typePrestation$ | async"
-            value="{{ prestations.duration }}-{{ prestations.id }}"
-          >
-            {{ prestations.title }}
-          </option>
-        </select>
+        <!-- appointment.component.html -->
+        <!-- Utilisez let prestations pour extraire les données de l'Observable -->
+        <ng-container *ngIf="typePrestation$ | async as prestations">
+          <select class="input-data">
+            <option value="">-- Choisissez une prestation --</option>
+            <ng-container *ngFor="let prestation of prestations; let i = index">
+              <!-- Affiche un séparateur si le type change par rapport à la prestation précédente -->
+              <option
+                *ngIf="i > 0 && prestation.type !== prestations[i - 1].type"
+                disabled
+              >
+                --------
+              </option>
+              <!-- Affiche l'option de prestation -->
+              <option [value]="prestation.id">{{ prestation.title }}</option>
+            </ng-container>
+          </select>
+        </ng-container>
       </div>
       <div class="data-field">
         <label for="start-date">Date du rendez-vous</label>

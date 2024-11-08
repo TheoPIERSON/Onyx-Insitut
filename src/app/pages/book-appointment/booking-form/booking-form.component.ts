@@ -47,7 +47,17 @@ export class BookingFormComponent implements OnInit {
   decodedToken: any;
   isFormIncomplete: boolean = false; // Nouveau boolean pour afficher l'erreur
 
-  typePrestation$: Observable<TypePrestation[]> = this.getTypePrestation();
+  typePrestation$: Observable<Type_prestation[]> =
+    this.getTypePrestation().pipe(
+      map((prestations) =>
+        prestations.sort((a, b) => {
+          if (a.type !== b.type) {
+            return a.type.localeCompare(b.type); // Tri par type
+          }
+          return a.title.localeCompare(b.title); // Tri alphabétique si même type
+        })
+      )
+    );
   appointments$: Observable<Appointments[]> = this.getAppointments();
 
   constructor(
