@@ -51,3 +51,13 @@
     overflow-y: scroll;
   }
 }
+.type {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: calc(3000vw / 1018);
+  margin-left: 2%;
+  margin-bottom: 2%;
+}

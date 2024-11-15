@@ -1,6 +1,6 @@
 <div *ngIf="prestationsByType$ | async as prestationsByType">
   <div *ngFor="let type of prestationsByType | keys" class="data-card">
-    <h2>{{ type }}</h2>
+    <h2 class="type">{{ type }}</h2>
     <div class="type-prestation-card">
       <div
         *ngFor="let prestation of prestationsByType[type]"
