@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CustomerService } from 'src/app/core/services/customer.service';
 
 @Component({
   selector: 'app-password-forgotten',
@@ -8,11 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './password-forgotten.component.css',
 })
 export class PasswordForgottenComponent {
-  passwordFieldType: string = 'password'; // Initialiser avec 'password'
+  constructor(private customerService: CustomerService) {}
 
-  sendPasswordRequest(): void {}
-  togglePasswordVisibility(): void {
-    this.passwordFieldType =
-      this.passwordFieldType === 'password' ? 'text' : 'password';
+  sendPasswordRequest(username: string): void {
+    this.customerService.askNewPassword(username).subscribe({
+      next: (response) => {
+        console.log('Email found:', response);
+        alert('Un email de réinitialisation a été envoyé.');
+      },
+      error: (error) => {
+        console.error('Error:', error);
+        alert('Adresse email non trouvée.');
+      },
+    });
   }
 }

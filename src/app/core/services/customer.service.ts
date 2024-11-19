@@ -45,4 +45,10 @@ export class CustomerService {
       activation
     );
   }
+  public askNewPassword(email: string): Observable<Customers> {
+    return this.http.post<Customers>(
+      `${this.apiServerUrl}/customer/forgot-password`,
+      { email }
+    );
+  }
 }
