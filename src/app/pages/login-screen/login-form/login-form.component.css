@@ -106,6 +106,10 @@ input:focus {
   border-radius: 5px;
   cursor: pointer;
 }
+.forgot-password-btn {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 700px) {
   form {
