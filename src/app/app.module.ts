@@ -36,6 +36,8 @@ import { AuthInterceptorService } from './core/services/interceptor/auth-interce
 import { PrestationScreenComponent } from './pages/prestation-screen/prestation-screen.component';
 import { PrestationCardDetailsComponent } from './component/prestation-card-details/prestation-card-details.component';
 import { KeysPipe } from './pipes/keys.pipe';
+import { PasswordForgottenComponent } from './pages/login-screen/password-forgotten/password-forgotten.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { KeysPipe } from './pipes/keys.pipe';
     PrestationScreenComponent,
     PrestationCardDetailsComponent,
     KeysPipe,
+    PasswordForgottenComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

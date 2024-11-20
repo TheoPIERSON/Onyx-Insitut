@@ -3,16 +3,16 @@ import { CustomerService } from 'src/app/core/services/customer.service';
 
 @Component({
   selector: 'app-password-forgotten',
-  standalone: true,
-  imports: [],
   templateUrl: './password-forgotten.component.html',
   styleUrl: './password-forgotten.component.css',
 })
 export class PasswordForgottenComponent {
   constructor(private customerService: CustomerService) {}
 
-  sendPasswordRequest(username: string): void {
-    this.customerService.askNewPassword(username).subscribe({
+  sendPasswordRequest(email: string): void {
+    console.log('Sending request with email:', email);
+
+    this.customerService.askNewPassword(email).subscribe({
       next: (response) => {
         console.log('Email found:', response);
         alert('Un email de réinitialisation a été envoyé.');

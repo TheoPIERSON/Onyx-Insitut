@@ -6,6 +6,7 @@ import { BookAppointmentComponent } from './pages/book-appointment/book-appointm
 import { ActivationFormComponent } from './pages/activation-form/activation-form.component';
 import { PrestationScreenComponent } from './pages/prestation-screen/prestation-screen.component';
 import { PasswordForgottenComponent } from './pages/login-screen/password-forgotten/password-forgotten.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 export const routes: Routes = [
   { path: '', component: BodyComponent, data: { displaySidebar: false } },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'activation', component: ActivationFormComponent },
   { path: 'prestation-detail', component: PrestationScreenComponent },
   { path: 'password-forgotten', component: PasswordForgottenComponent },
+  { path: 'password-reset', component: ChangePasswordComponent },
 ];
 
 @NgModule({

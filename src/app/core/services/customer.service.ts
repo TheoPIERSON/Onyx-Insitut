@@ -45,8 +45,8 @@ export class CustomerService {
       activation
     );
   }
-  public askNewPassword(email: string): Observable<Customers> {
-    return this.http.post<Customers>(
+  public askNewPassword(email: string): Observable<string> {
+    return this.http.post<string>(
       `${this.apiServerUrl}/customer/forgot-password`,
       { email }
     );

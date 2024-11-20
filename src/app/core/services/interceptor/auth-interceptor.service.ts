@@ -33,7 +33,8 @@ export class AuthInterceptorService implements HttpInterceptor {
         token &&
         !request.url.endsWith('/type_prestation/all') &&
         !request.url.endsWith('/customer/add') &&
-        !request.url.endsWith('/customer/activate')
+        !request.url.endsWith('/customer/activate') &&
+        !request.url.endsWith('/customer/forgot-password')
       ) {
         // Exclure l'URL du token
         request = request.clone({
