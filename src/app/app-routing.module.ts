@@ -15,9 +15,9 @@ export const routes: Routes = [
   { path: 'activation', component: ActivationFormComponent },
   { path: 'prestation-detail', component: PrestationScreenComponent },
   { path: 'password-forgotten', component: PasswordForgottenComponent },
-  { path: 'password-reset', component: ChangePasswordComponent },
+  { path: 'password-reset/:token', component: ChangePasswordComponent },
 ];
-
+//
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

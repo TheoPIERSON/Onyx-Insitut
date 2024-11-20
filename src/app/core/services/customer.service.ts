@@ -51,4 +51,14 @@ export class CustomerService {
       { email }
     );
   }
+  public updatePassword(
+    token: string,
+    newPassword: string
+  ): Observable<string> {
+    const payload = { token, newPassword };
+    return this.http.post<string>(
+      `${this.apiServerUrl}/reset-password`,
+      payload
+    );
+  }
 }
