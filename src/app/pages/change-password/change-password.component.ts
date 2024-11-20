@@ -20,7 +20,9 @@ export class ChangePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     // Récupération du token depuis l'URL
-    this.token = this.route.snapshot.queryParamMap.get('token') || '';
+    this.token =
+      this.route.snapshot.queryParamMap.get('token') || 'tokenpastrouve';
+    console.log(this.token);
   }
 
   changePassword(): void {
