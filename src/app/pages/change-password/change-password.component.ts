@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/core/services/customer.service';
 
 @Component({
@@ -15,13 +15,13 @@ export class ChangePasswordComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     // Récupération du token depuis l'URL
-    this.token =
-      this.route.snapshot.queryParamMap.get('token') || 'tokenpastrouve';
+    this.token = this.route.snapshot.paramMap.get('token') || 'tokenpastrouve';
     console.log(this.token);
   }
 
@@ -34,11 +34,15 @@ export class ChangePasswordComponent implements OnInit {
     this.customerService.updatePassword(this.token, this.password).subscribe({
       next: (response) => {
         console.log('Mot de passe mis à jour:', response);
+        this.redirectToLogin();
       },
       error: (error) => {
         console.log('Une erreur est survenue:', error);
       },
     });
+  }
+  redirectToLogin() {
+    this.router.navigate(['/login']);
   }
 
   togglePasswordVisibility(): void {
