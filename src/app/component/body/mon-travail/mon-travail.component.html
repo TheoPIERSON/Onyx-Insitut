@@ -3,15 +3,19 @@
   <div class="instagram-feed">
     <ngx-behold-widget [feedId]="'4GEk7qnedwb8Caa6R1ai'" />
   </div>
-  <div class="type-prestation-card">
+
+  <div class="type-prestations">
     <div
       (click)="redirectToPrestationScreen()"
-      class="prestation-data"
-      *ngFor="let service of typePrestation$ | async"
+      class="type-prestation-column"
+      *ngFor="let type of typePrestationGrouped$ | async | keyvalue"
     >
-      <div class="data-card card-title">{{ service.title }}</div>
-      <div class="data-card">{{ service.price }}€</div>
-      <div class="data-card">{{ service.duration }}min</div>
+      <h2 class="prestation-title">{{ type.key | titlecase }}</h2>
+      <div class="prestation-data" *ngFor="let service of type.value">
+        <div class="data-card card-title">{{ service.title }}</div>
+        <div class="data-card">{{ service.price }}€</div>
+        <div class="data-card">{{ service.duration }}min</div>
+      </div>
     </div>
   </div>
 </div>

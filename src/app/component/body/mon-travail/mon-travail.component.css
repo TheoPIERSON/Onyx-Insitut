@@ -9,7 +9,8 @@
 .container {
   margin-bottom: 3%;
 }
-h1 {
+h1,
+h2 {
   font-family: "Andika", sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -19,27 +20,34 @@ h1 {
   margin-left: 2%;
   margin-bottom: 4%;
 }
-
-.type-prestation-card {
+h2 {
+  font-size: calc(3000vw / 1018);
+}
+.type-prestations {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.type-prestation-column {
   display: grid;
   place-items: center;
   justify-content: space-around;
-  margin-bottom: 2%;
-  margin-top: 2%;
+  margin: 2%;
   height: 14rem;
-  overflow-y: auto;
 }
 
 .prestation-data {
   display: flex;
   list-style: none;
   justify-content: space-around;
-  padding: 1rem;
+  padding: 0.8rem;
   margin-top: 1.5%;
   border-radius: 8px;
   background: var(--card-color);
   box-shadow: 3px 3px 0px #ffffffd8;
-  width: 60rem;
+  width: 24rem;
+  overflow-y: auto;
 }
 .data-card {
   color: white;
