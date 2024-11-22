@@ -1,26 +1,32 @@
 .type-prestation-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3%;
-  margin-left: 3%;
-  margin-right: 3%;
+  place-items: center;
   margin-bottom: 5%;
   margin-top: 2%;
   height: auto;
   overflow-x: hidden;
   padding-bottom: 1%;
 }
+h3 {
+  text-decoration: underline;
+  padding: 0.5%;
+  font-weight: 600;
+  width: 20rem;
+}
 
 .prestation-data {
-  display: grid;
-  list-style: none;
   justify-content: space-around;
-  padding: 1rem;
-  margin-top: 1.5%;
+  padding: 0.4rem;
+  margin-top: 0.5%;
   border-radius: 8px;
   background: var(--card-color);
   box-shadow: 3px 3px 0px #ffffffd8;
   width: 90%;
+}
+.prestation-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .data-card {
   color: white;
@@ -41,6 +47,12 @@
 .card-description {
   overflow-y: scroll;
   height: 8rem;
+}
+.price-duration {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5%;
+  margin-right: 10rem;
 }
 @media screen and (max-width: 700px) {
   .type-prestation-card {
