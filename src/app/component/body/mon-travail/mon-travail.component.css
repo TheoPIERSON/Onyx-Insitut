@@ -21,7 +21,7 @@ h2 {
   margin-bottom: 4%;
 }
 h2 {
-  font-size: calc(3000vw / 1018);
+  font-size: calc(4000vw / 1018);
 }
 .type-prestations {
   display: flex;
@@ -74,5 +74,9 @@ img {
   .prestation-data {
     padding: 0.5rem;
     width: 20rem;
+  }
+  .type-prestation-column {
+    margin: 0;
+    height: auto;
   }
 }
