@@ -67,7 +67,13 @@ img {
   width: 70%;
   margin-left: 15%;
 }
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1400px) {
+  .type-prestation-column {
+    overflow: auto;
+    height: 15rem;
+  }
+}
+@media screen and (max-width: 1000px) {
   .type-prestations {
     display: grid;
     width: auto;
@@ -76,6 +82,7 @@ img {
   .type-prestation-column {
     margin: 0;
     height: auto;
+    overflow: auto;
   }
 }
 @media screen and (max-width: 700px) {
