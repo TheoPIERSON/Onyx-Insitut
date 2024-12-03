@@ -69,8 +69,8 @@ h3 {
     grid-template-columns: 1fr;
     gap: 0.5%;
     margin-bottom: 0%;
-    height: 170vh;
-    overflow-y: scroll;
+
+    overflow-y: hidden;
   }
   h3 {
     width: auto;
