@@ -7,6 +7,7 @@ import { ActivationFormComponent } from './pages/activation-form/activation-form
 import { PrestationScreenComponent } from './pages/prestation-screen/prestation-screen.component';
 import { PasswordForgottenComponent } from './pages/login-screen/password-forgotten/password-forgotten.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { OnyxPresentationComponent } from './pages/onyx-presentation/onyx-presentation.component';
 
 export const routes: Routes = [
   { path: '', component: BodyComponent, data: { displaySidebar: false } },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'prestation-detail', component: PrestationScreenComponent },
   { path: 'password-forgotten', component: PasswordForgottenComponent },
   { path: 'password-reset/:token', component: ChangePasswordComponent },
+  { path: 'about', component: OnyxPresentationComponent },
 ];
 //
 @NgModule({
