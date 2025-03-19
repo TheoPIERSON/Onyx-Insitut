@@ -43,7 +43,7 @@ export class MonTravailComponent implements OnInit {
     return this.typePrestationService.fetchTypePrestation();
   }
 
-  redirectToPrestationScreen() {
-    this.router.navigate(['/prestation-detail']);
+  redirectToPrestationScreen(type: string) {
+    this.router.navigate(['/prestation-detail', type]);
   }
 }

@@ -4,18 +4,30 @@
     <ngx-behold-widget [feedId]="'4GEk7qnedwb8Caa6R1ai'" />
   </div>
 
-  <div class="type-prestations">
+  <h2>Découvrez nos prestations</h2>
+  <div class="card-list">
+    <div
+      class="prestation-card"
+      (click)="redirectToPrestationScreen(type.key)"
+      *ngFor="let type of typePrestationGrouped$ | async | keyvalue"
+    >
+      <span>{{ type.key | titlecase }}</span>
+    </div>
+  </div>
+  <!-- <div class="type-prestations">
     <div
       (click)="redirectToPrestationScreen()"
       class="type-prestation-column"
       *ngFor="let type of typePrestationGrouped$ | async | keyvalue"
     >
       <h2 class="prestation-title">{{ type.key | titlecase }}</h2>
-      <div class="prestation-data" *ngFor="let service of type.value">
-        <div class="data-card card-title">{{ service.title }}</div>
-        <div class="data-card">{{ service.price }}€</div>
-        <div class="data-card">{{ service.duration }}min</div>
+      <div class="prestation-card">
+        <div class="prestation-data" *ngFor="let service of type.value">
+          <div class="data-card card-title">{{ service.title }}</div>
+          <div class="data-card">{{ service.price }}€</div>
+          <div class="data-card">{{ service.duration }}min</div>
+        </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

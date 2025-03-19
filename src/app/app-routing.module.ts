@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'book-appointment', component: BookAppointmentComponent },
   { path: 'activation', component: ActivationFormComponent },
-  { path: 'prestation-detail', component: PrestationScreenComponent },
+  { path: 'prestation-detail/:type', component: PrestationScreenComponent },
   { path: 'password-forgotten', component: PasswordForgottenComponent },
   { path: 'password-reset/:token', component: ChangePasswordComponent },
   { path: 'about', component: OnyxPresentationComponent },

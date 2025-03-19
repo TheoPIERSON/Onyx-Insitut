@@ -1,21 +1,12 @@
-<div *ngIf="prestationsByType$ | async as prestationsByType">
-  <div *ngFor="let type of prestationsByType | keys" class="data-card">
-    <h2 class="type">{{ type | titlecase }}</h2>
-    <div class="type-prestation-card">
-      <div
-        *ngFor="let prestation of prestationsByType[type]"
-        class="prestation-data"
-      >
-        <!-- Affiche les détails de chaque prestation ici -->
-
-        <div class="prestation-info">
-          <h3>{{ prestation.title }}</h3>
-          <div class="price-duration"></div>
-          <p>Durée : {{ prestation.duration }}</p>
-          <p>Prix : {{ prestation.price }}</p>
-        </div>
-        <p>{{ prestation.description }}</p>
-      </div>
+<h2>Nos prestations pour {{ type }}</h2>
+<div class="type-prestation-card">
+  <div class="prestation-data" *ngFor="let prestation of prestations">
+    <div class="prestation-info">
+      <h3>{{ prestation.title }}</h3>
+      <div class="price-duration"></div>
+      <p>Durée : {{ prestation.duration }}</p>
+      <p>Prix : {{ prestation.price }}</p>
     </div>
+    <p>{{ prestation.description }}</p>
   </div>
 </div>

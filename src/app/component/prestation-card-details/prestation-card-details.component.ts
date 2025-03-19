@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TypePrestation } from 'src/app/core/models/type_prestation';
@@ -10,32 +11,26 @@ import { TypePrestationService } from 'src/app/core/services/type-prestation.ser
   styleUrls: ['./prestation-card-details.component.css'],
 })
 export class PrestationCardDetailsComponent implements OnInit {
-  prestationsByType$:
-    | Observable<{ [key: string]: TypePrestation[] }>
-    | undefined;
+  prestations: TypePrestation[] = [];
+  type: string = '';
 
-  constructor(private typePrestationService: TypePrestationService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private typePrestationService: TypePrestationService
+  ) {}
 
   ngOnInit(): void {
-    this.prestationsByType$ = this.getTypePrestation().pipe(
-      map((prestations) => this.groupByType(prestations))
-    );
+    this.route.paramMap.subscribe((params) => {
+      this.type = params.get('type') || '';
+      this.loadPrestations();
+    });
   }
 
-  private getTypePrestation(): Observable<TypePrestation[]> {
-    return this.typePrestationService.fetchTypePrestation();
-  }
-
-  private groupByType(prestations: TypePrestation[]): {
-    [key: string]: TypePrestation[];
-  } {
-    return prestations.reduce((acc, prestation) => {
-      const type = prestation.type || 'Autres'; // Utilise une valeur par défaut si le type est manquant
-      if (!acc[type]) {
-        acc[type] = [];
-      }
-      acc[type].push(prestation);
-      return acc;
-    }, {} as { [key: string]: TypePrestation[] });
+  private loadPrestations() {
+    this.typePrestationService.fetchTypePrestation().subscribe((data) => {
+      this.prestations = data.filter(
+        (prestation) => prestation.type === this.type
+      );
+    });
   }
 }
