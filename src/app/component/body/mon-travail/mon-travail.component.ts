@@ -46,4 +46,21 @@ export class MonTravailComponent implements OnInit {
   redirectToPrestationScreen(type: string) {
     this.router.navigate(['/prestation-detail', type]);
   }
+  // Dans votre composant TypeScript
+  getImagePath(typeKey: string): string {
+    // Mappez chaque type à son image correspondante
+    const imageMap: { [key: string]: string } = {
+      mains: '../../../assets/images/nails.png',
+      pieds: '../../../assets/images/foot.png',
+      visage: '../../../assets/images/face.png',
+      regard: '../../../assets/images/eyes.png',
+
+      // Ajoutez tous vos types ici
+    };
+
+    // Retournez l'image correspondante ou une image par défaut
+    return (
+      imageMap[typeKey.toLowerCase()] || '../../../assets/images/nails.png'
+    );
+  }
 }

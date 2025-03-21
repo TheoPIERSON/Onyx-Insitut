@@ -9,7 +9,7 @@
 .container {
   margin-bottom: 3%;
 }
-h1,
+
 h2 {
   font-family: "Andika", sans-serif;
   font-weight: 700;
@@ -25,50 +25,16 @@ h2 {
   height: 4rem;
   margin-top: 5%;
 }
-.type-prestations {
-  display: flex;
-
-  width: auto;
-  justify-content: center;
-}
-.type-prestation-column {
+.prestation-card {
   display: grid;
   place-items: center;
-  justify-content: space-around;
-  margin: 2%;
-  height: 34rem;
-}
-
-.prestation-data {
-  display: flex;
-  justify-content: space-around;
-  padding: 0.3rem;
-  margin-top: 1.5%;
-  width: 100%;
-  height: auto;
-}
-.data-card {
-  color: white;
-}
-.card-title {
-  width: 13rem;
-}
-.prestation-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 26rem;
   background: var(--card-color);
   box-shadow: 3px 3px 0px #ffffffd8;
   height: 18rem;
   color: white;
 }
-img {
-  width: 21rem;
-  height: 21rem;
-  object-fit: cover;
-  margin: 0.5rem;
-}
+
 .instagram-feed {
   width: 70%;
   margin-left: 15%;
@@ -79,39 +45,35 @@ img {
   place-items: center;
   gap: 2rem;
 }
+.icon {
+  width: 40%;
+  height: auto;
+}
 
-@media screen and (max-width: 1400px) {
-  .type-prestation-column {
-    overflow: auto;
-    height: 15rem;
-  }
+.card-title {
+  font-size: x-large;
 }
-@media screen and (max-width: 1000px) {
-  .type-prestations {
-    display: grid;
-    width: auto;
-    justify-content: center;
-  }
-  .type-prestation-column {
-    margin: 0;
-    height: auto;
-    overflow: auto;
-  }
-}
+
 @media screen and (max-width: 700px) {
+  .card-list {
+    grid-template-columns: 1fr;
+  }
+  .prestation-card {
+    width: 80%;
+    height: auto;
+  }
+  .icon {
+    margin: 4%;
+  }
+  .card-title {
+    margin: 4%;
+  }
   .instagram-feed {
     width: 90%;
     margin: 0%;
     margin-left: 5%;
   }
-  .prestation-data {
-    padding: 0.5rem;
-    width: 20rem;
-  }
-  .type-prestation-column {
-    margin: 0;
-    height: auto;
-  }
+
   h2 {
     font-size: calc(5000vw / 1018);
   }
