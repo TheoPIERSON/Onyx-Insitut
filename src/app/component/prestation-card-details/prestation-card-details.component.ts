@@ -28,9 +28,18 @@ export class PrestationCardDetailsComponent implements OnInit {
 
   private loadPrestations() {
     this.typePrestationService.fetchTypePrestation().subscribe((data) => {
+      // Filtrer d'abord les prestations par type
       this.prestations = data.filter(
         (prestation) => prestation.type === this.type
       );
+
+      // Puis les trier par ordre alphabétique
+      // (en supposant que votre objet TypePrestation a une propriété 'name')
+      this.prestations.sort((a, b) => {
+        return a.title.localeCompare(b.title, undefined, {
+          sensitivity: 'base',
+        });
+      });
     });
   }
 }

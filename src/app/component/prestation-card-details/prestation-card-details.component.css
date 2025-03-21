@@ -1,17 +1,28 @@
 .type-prestation-card {
   display: grid;
-  place-items: center;
-  margin-bottom: 5%;
-  margin-top: 2%;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 3%;
+  gap: 2%;
   height: auto;
-  overflow-x: hidden;
+  margin-bottom: 10%;
   padding-bottom: 1%;
+  color: white;
+}
+h2 {
+  font-family: "Andika", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
+  font-size: calc(5000vw / 1018);
+  margin-left: 2%;
+  margin-bottom: 4%;
+  font-size: calc(4000vw / 1018);
+  height: 4rem;
+  margin-top: 5%;
 }
 h3 {
-  text-decoration: underline;
-  padding: 0.5%;
-  font-weight: 600;
-  width: 20rem;
+  width: 12rem;
 }
 
 .prestation-data {
@@ -28,9 +39,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
 }
-.data-card {
-  color: white;
-}
+
 .card-title {
   display: flex;
   justify-content: center;
@@ -54,25 +63,15 @@ h3 {
   padding: 0.5%;
   margin-right: 10rem;
 }
-.type {
-  font-family: "Andika", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  text-shadow: -2px 2px 0px rgba(252, 98, 170, 1);
-  font-size: calc(3000vw / 1018);
-  margin-left: 2%;
-  margin-bottom: 2%;
-}
+
 @media screen and (max-width: 700px) {
   .type-prestation-card {
+    margin-left: 2%;
     grid-template-columns: 1fr;
     gap: 0.5%;
-    margin-bottom: 0%;
-
-    overflow-y: hidden;
+    margin-bottom: 38%;
   }
-  h3 {
+  h2 {
     width: auto;
   }
   .type {
