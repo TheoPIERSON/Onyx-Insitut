@@ -50,6 +50,7 @@
           <mat-datepicker #myDatePicker></mat-datepicker>
         </div>
       </div>
+
       <div class="data-field">
         <label for="start-date">Heure du rendez-vous</label>
         <div class="hours-container">
@@ -57,6 +58,10 @@
             class="custom-button"
             *ngFor="
               let hour of [
+                '09:00',
+                '09:15',
+                '09:30',
+                '09:45',
                 '10:00',
                 '10:15',
                 '10:30',
@@ -65,6 +70,10 @@
                 '11:15',
                 '11:30',
                 '11:45',
+                '12:00',
+                '12:15',
+                '12:30',
+                '12:45',
                 '13:00',
                 '13:15',
                 '13:30',
@@ -91,6 +100,7 @@
             [ngClass]="{ 'selected-hour': isHourSelected(hour) }"
             [class.disabled]="!isHourAvailable(hour)"
             (click)="selectHour(hour)"
+            keyup="selectHour(hour)"
           >
             {{ hour }}
           </div>

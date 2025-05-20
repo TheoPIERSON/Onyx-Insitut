@@ -12,6 +12,10 @@ import { AppointmentService } from 'src/app/core/services/AppointmentService/app
 import { TypePrestationIdService } from 'src/app/core/services/Type_prestation/type-prestation-id.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AppointmentModalComponent } from '../appointment-modal/appointment-modal.component';
+import {
+  TimeSlot,
+  TimeSlotService,
+} from 'src/app/core/services/TimeSlotService/time-slot.service';
 
 @Component({
   selector: 'app-booking-form',
@@ -26,6 +30,7 @@ export class BookingFormComponent implements OnInit {
   dateToString: string = this.selectedDate.toLocaleDateString();
   selectedHour: string | null = null; // Modifié pour accepter null
   takenHours: { start: string; end: string }[] = [];
+  availableSlots: TimeSlot[] = []; // Ajouté pour stocker les créneaux disponibles
 
   customerId: number = 0;
   customerFirstname: string = '';
@@ -65,6 +70,7 @@ export class BookingFormComponent implements OnInit {
     private typePrestationIdService: TypePrestationIdService,
     private customerService: CustomerService,
     private appointmentService: AppointmentService,
+    private availableTimeSlotService: TimeSlotService, // Ajout du service TimeSlot
     public matDialog: MatDialog,
     private fb: FormBuilder
   ) {
@@ -189,15 +195,75 @@ export class BookingFormComponent implements OnInit {
   }
 
   onDateChange(date: Date) {
-    const twentyHoursInMilliseconds = 20 * 60 * 60 * 1000;
     console.log('Date sélectionnée :', date);
+    this.selectedDate = date;
+    this.selectedHour = null;
 
-    const startDate: string = date.toISOString();
-    const endDate: Date = new Date(date.getTime() + twentyHoursInMilliseconds);
-    const endDateStr: string = endDate.toISOString();
+    // Formater la date en chaîne YYYY-MM-DD pour l'API
+    const dateStr = date.toISOString().split('T')[0];
 
-    this.appointmentService.findByDate(startDate, endDateStr);
-    this.isThereAppointmentOnDate(startDate, endDateStr);
+    // Récupérer les créneaux disponibles pour cette date
+    this.availableTimeSlotService.getAvailableSlots(dateStr).subscribe(
+      (slots) => {
+        this.availableSlots = slots;
+        console.log('Créneaux disponibles (détaillés):', JSON.stringify(slots));
+
+        // Récupérer également les rendez-vous existants
+        this.loadExistingAppointments(date);
+      },
+      (error) => {
+        console.error(
+          'Erreur lors de la récupération des créneaux disponibles',
+          error
+        );
+        // En cas d'erreur, vider la liste des créneaux disponibles
+        this.availableSlots = [];
+        // Continuer avec la récupération des rendez-vous existants
+        this.loadExistingAppointments(date);
+      }
+    );
+  }
+
+  loadExistingAppointments(date: Date) {
+    const startDate = new Date(date);
+    startDate.setHours(0, 0, 0, 0);
+
+    const endDate = new Date(date);
+    endDate.setHours(23, 59, 59, 999);
+
+    this.appointmentService
+      .findByDate(startDate.toISOString(), endDate.toISOString())
+      .subscribe(
+        (appointments: any[]) => {
+          if (appointments.length > 0) {
+            this.takenHours = appointments.map((appointment) => {
+              const appointmentStartDate = new Date(
+                appointment.appointmentStartDate
+              );
+              const appointmentEndDate = new Date(
+                appointment.appointmentEndDate
+              );
+
+              const startHour = appointmentStartDate
+                .toTimeString()
+                .substring(0, 5);
+              const endHour = appointmentEndDate.toTimeString().substring(0, 5);
+
+              console.log(`Rendez-vous de ${startHour} à ${endHour}`);
+
+              return { start: startHour, end: endHour };
+            });
+          } else {
+            this.takenHours = [];
+          }
+        },
+        (error) => {
+          console.error(
+            'Erreur lors de la récupération des rendez-vous',
+            error
+          );
+        }
+      );
   }
 
   openModal() {
@@ -209,43 +275,41 @@ export class BookingFormComponent implements OnInit {
     );
   }
 
-  isThereAppointmentOnDate(startDate: string, endDate: string) {
-    this.appointmentService.findByDate(startDate, endDate).subscribe(
-      (appointments: any[]) => {
-        if (appointments.length === 0) {
-          console.log('Aucun rdv à cette date');
-        } else {
-          this.takenHours = appointments.map((appointment) => {
-            const appointmentStartDate = new Date(
-              appointment.appointmentStartDate
-            );
-            const appointmentEndDate = new Date(appointment.appointmentEndDate);
-
-            const startHour = appointmentStartDate
-              .toTimeString()
-              .substring(0, 5);
-            const endHour = appointmentEndDate.toTimeString().substring(0, 5);
-
-            console.log(`Rendez-vous de ${startHour} à ${endHour}`);
-
-            return { start: startHour, end: endHour };
-          });
-        }
-      },
-      (error) => {
-        console.error('Erreur lors de la récupération des rendez-vous', error);
-      }
-    );
-  }
-
+  // Vérification si un créneau est disponible en tenant compte des deux contraintes:
+  // 1. Le créneau doit être disponible selon les règles définies par l'administrateur
+  // 2. Le créneau ne doit pas être déjà pris par un autre rendez-vous
   isHourAvailable(hour: string): boolean {
+    // Vérifier si la journée entière est disponible
+    const isDayAvailable = this.availableSlots.some(
+      (slot) => slot.hour === null
+    );
+
+    // Vérifier si l'heure spécifique est disponible
+    const isHourSpecificallyAvailable = this.availableSlots.some(
+      (slot) => slot.hour === hour
+    );
+
+    // Si ni la journée ni l'heure spécifique ne sont disponibles, retourner false
+    if (!isDayAvailable && !isHourSpecificallyAvailable) {
+      return false;
+    }
+
+    // Maintenant, vérifier si l'heure n'est pas déjà prise par un rendez-vous
     const [hourStart, minuteStart] = hour.split(':').map(Number);
     const start = new Date(this.selectedDate);
     start.setHours(hourStart, minuteStart, 0, 0);
 
     const end = new Date(start);
-    end.setMinutes(start.getMinutes() + this.selectedTypePrestation.duration);
+    if (this.selectedPrestation) {
+      const parts = this.selectedPrestation.split('-');
+      const duration = parseInt(parts[0], 10);
+      end.setMinutes(start.getMinutes() + duration);
+    } else {
+      // Utiliser la durée par défaut si aucune prestation n'est sélectionnée
+      end.setMinutes(start.getMinutes() + 30); // 30 minutes par défaut
+    }
 
+    // Vérifier les chevauchements avec les rendez-vous existants
     for (const interval of this.takenHours) {
       const [hourIntervalStart, minuteIntervalStart] = interval.start
         .split(':')
@@ -272,6 +336,11 @@ export class BookingFormComponent implements OnInit {
 
     return true;
   }
+
+  hasAvailableSlots(): boolean {
+    return this.availableSlots.length > 0;
+  }
+
   isFormValid(): boolean {
     return (
       !!this.selectedPrestation && !!this.selectedDate && !!this.selectedHour
